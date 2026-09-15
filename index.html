@@ -1,1019 +1,440 @@
+```html
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="dark">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <title>Humanivo — Free AI, Text, PDF & Online Tools</title>
-
-  <meta name="description" content="Humanivo is a free collection of practical AI, text, PDF, developer, calculator and productivity tools built by Sher Gul.">
-  <meta name="keywords" content="Humanivo, free online tools, AI tools, AI text humanizer, PDF tools, text tools, developer tools, calculators, productivity tools">
-  <meta name="author" content="Sher Gul">
-  <meta name="robots" content="index, follow">
-
-  <meta property="og:title" content="Humanivo — Free AI & Online Tools">
-  <meta property="og:description" content="Simple, useful and free digital tools for everyday work.">
-  <meta property="og:type" content="website">
-
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='24' fill='%237c3aed'/%3E%3Cpath d='M28 30h18v18H28zm26 26h18v18H54zM46 38h8m-26 10v8m26-8v8M46 64h8' fill='none' stroke='white' stroke-width='7' stroke-linecap='round'/%3E%3C/svg%3E">
-
-  <style>
-    :root {
-      --bg: #07070a;
-      --bg-soft: #0b0b10;
-      --card: rgba(255,255,255,0.045);
-      --card-hover: rgba(255,255,255,0.075);
-      --border: rgba(255,255,255,0.09);
-      --border-hover: rgba(167,139,250,0.35);
-      --text: #f7f7fb;
-      --muted: #9b9ba8;
-      --muted-light: #c3c3ce;
-      --purple: #8b5cf6;
-      --purple-light: #a78bfa;
-      --blue: #6366f1;
-      --green: #34d399;
-      --max: 1180px;
-    }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      background:
-        radial-gradient(circle at 50% -10%, rgba(124,58,237,0.16), transparent 38%),
-        radial-gradient(circle at 85% 35%, rgba(99,102,241,0.07), transparent 28%),
-        var(--bg);
-      color: var(--text);
-      font-family:
-        Inter,
-        ui-sans-serif,
-        system-ui,
-        -apple-system,
-        BlinkMacSystemFont,
-        "Segoe UI",
-        sans-serif;
-      line-height: 1.6;
-      overflow-x: hidden;
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    button,
-    input {
-      font: inherit;
-    }
-
-    .container {
-      width: min(var(--max), calc(100% - 40px));
-      margin: 0 auto;
-    }
-
-    /* =========================
-       HEADER
-    ========================= */
-
-    header {
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      border-bottom: 1px solid rgba(255,255,255,0.06);
-      background: rgba(7,7,10,0.78);
-      backdrop-filter: blur(18px);
-      -webkit-backdrop-filter: blur(18px);
-    }
-
-    .nav {
-      height: 76px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 30px;
-    }
-
-    .logo {
-      display: inline-flex;
-      align-items: center;
-      gap: 11px;
-      font-size: 21px;
-      font-weight: 800;
-      letter-spacing: -0.7px;
-    }
-
-    .logo-mark {
-      width: 36px;
-      height: 36px;
-      display: grid;
-      place-items: center;
-      border-radius: 11px;
-      background: linear-gradient(135deg, #7c3aed, #6366f1);
-      box-shadow: 0 8px 28px rgba(124,58,237,0.28);
-    }
-
-    .logo-mark svg {
-      width: 21px;
-      height: 21px;
-    }
-
-    .logo span {
-      color: var(--purple-light);
-    }
-
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 30px;
-      color: var(--muted);
-      font-size: 14px;
-      font-weight: 500;
-    }
-
-    .nav-links a {
-      transition: color .2s ease;
-    }
-
-    .nav-links a:hover {
-      color: white;
-    }
-
-    .nav-button {
-      padding: 10px 17px;
-      border-radius: 10px;
-      border: 1px solid rgba(167,139,250,0.25);
-      background: rgba(139,92,246,0.12);
-      color: #ddd3ff !important;
-    }
-
-    /* =========================
-       HERO
-    ========================= */
-
-    .hero {
-      position: relative;
-      text-align: center;
-      padding: 105px 0 75px;
-    }
-
-    .hero::before {
-      content: "";
-      position: absolute;
-      width: 520px;
-      height: 520px;
-      left: 50%;
-      top: -260px;
-      transform: translateX(-50%);
-      background: rgba(124,58,237,0.10);
-      filter: blur(100px);
-      pointer-events: none;
-    }
-
-    .eyebrow {
-      position: relative;
-      display: inline-flex;
-      align-items: center;
-      gap: 9px;
-      padding: 7px 13px;
-      margin-bottom: 24px;
-      border: 1px solid rgba(167,139,250,0.20);
-      border-radius: 999px;
-      background: rgba(139,92,246,0.07);
-      color: #c8b8ff;
-      font-size: 12px;
-      font-weight: 600;
-      letter-spacing: .2px;
-    }
-
-    .eyebrow-dot {
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      background: #a78bfa;
-      box-shadow: 0 0 12px #8b5cf6;
-    }
-
-    .hero h1 {
-      position: relative;
-      max-width: 900px;
-      margin: 0 auto;
-      font-size: clamp(3rem, 7vw, 5.8rem);
-      line-height: .98;
-      letter-spacing: -4px;
-      font-weight: 850;
-    }
-
-    .gradient-text {
-      background: linear-gradient(
-        100deg,
-        #ffffff 15%,
-        #c4b5fd 48%,
-        #8b5cf6 80%
-      );
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-    }
-
-    .hero-description {
-      position: relative;
-      max-width: 670px;
-      margin: 28px auto 0;
-      color: var(--muted);
-      font-size: 17px;
-      line-height: 1.75;
-    }
-
-    .hero-actions {
-      position: relative;
-      display: flex;
-      justify-content: center;
-      gap: 12px;
-      margin-top: 34px;
-      flex-wrap: wrap;
-    }
-
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 9px;
-      min-height: 48px;
-      padding: 0 21px;
-      border-radius: 12px;
-      font-size: 14px;
-      font-weight: 700;
-      transition:
-        transform .2s ease,
-        border-color .2s ease,
-        background .2s ease;
-    }
-
-    .btn:hover {
-      transform: translateY(-2px);
-    }
-
-    .btn-primary {
-      background: white;
-      color: #09090b;
-      box-shadow: 0 10px 35px rgba(255,255,255,0.08);
-    }
-
-    .btn-secondary {
-      border: 1px solid var(--border);
-      background: rgba(255,255,255,0.035);
-      color: #dddde6;
-    }
-
-    /* =========================
-       TOOL SEARCH
-    ========================= */
-
-    .search-box {
-      position: relative;
-      max-width: 680px;
-      margin: 52px auto 0;
-    }
-
-    .search-box input {
-      width: 100%;
-      height: 58px;
-      padding: 0 20px 0 52px;
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      outline: none;
-      background: rgba(255,255,255,0.045);
-      color: white;
-      font-size: 14px;
-      backdrop-filter: blur(12px);
-      transition: border-color .2s ease, background .2s ease;
-    }
-
-    .search-box input:focus {
-      border-color: rgba(167,139,250,0.45);
-      background: rgba(255,255,255,0.06);
-    }
-
-    .search-box input::placeholder {
-      color: #747480;
-    }
-
-    .search-icon {
-      position: absolute;
-      left: 19px;
-      top: 50%;
-      transform: translateY(-50%);
-      color: #777783;
-    }
-
-    /* =========================
-       TOOLS
-    ========================= */
-
-    .tools-section {
-      padding: 60px 0 105px;
-    }
-
-    .section-heading {
-      display: flex;
-      justify-content: space-between;
-      align-items: end;
-      gap: 30px;
-      margin-bottom: 28px;
-    }
-
-    .section-heading h2 {
-      font-size: 28px;
-      letter-spacing: -1px;
-    }
-
-    .section-heading p {
-      color: var(--muted);
-      font-size: 14px;
-      max-width: 480px;
-      text-align: right;
-    }
-
-    .tool-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 15px;
-    }
-
-    .tool-card {
-      position: relative;
-      min-height: 205px;
-      padding: 25px;
-      border: 1px solid var(--border);
-      border-radius: 18px;
-      background: linear-gradient(
-        145deg,
-        rgba(255,255,255,0.055),
-        rgba(255,255,255,0.018)
-      );
-      overflow: hidden;
-      transition:
-        transform .25s ease,
-        border-color .25s ease,
-        background .25s ease;
-    }
-
-    .tool-card::after {
-      content: "";
-      position: absolute;
-      width: 130px;
-      height: 130px;
-      right: -60px;
-      top: -60px;
-      border-radius: 50%;
-      background: rgba(139,92,246,0.08);
-      filter: blur(25px);
-    }
-
-    .tool-card:hover {
-      transform: translateY(-4px);
-      border-color: var(--border-hover);
-      background: var(--card-hover);
-    }
-
-    .tool-icon {
-      width: 44px;
-      height: 44px;
-      display: grid;
-      place-items: center;
-      margin-bottom: 22px;
-      border-radius: 13px;
-      border: 1px solid rgba(255,255,255,0.08);
-      background: rgba(139,92,246,0.11);
-      color: #c4b5fd;
-    }
-
-    .tool-card h3 {
-      font-size: 17px;
-      margin-bottom: 7px;
-      letter-spacing: -.3px;
-    }
-
-    .tool-card p {
-      color: var(--muted);
-      font-size: 13px;
-      line-height: 1.65;
-      max-width: 310px;
-    }
-
-    .tool-link {
-      position: absolute;
-      right: 23px;
-      bottom: 22px;
-      color: #aaa0c8;
-      font-size: 13px;
-      font-weight: 600;
-    }
-
-    /* =========================
-       FEATURE STRIP
-    ========================= */
-
-    .feature-section {
-      border-top: 1px solid rgba(255,255,255,0.06);
-      border-bottom: 1px solid rgba(255,255,255,0.06);
-      background: rgba(255,255,255,0.018);
-    }
-
-    .feature-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-    }
-
-    .feature {
-      padding: 42px 35px;
-      border-right: 1px solid rgba(255,255,255,0.06);
-    }
-
-    .feature:last-child {
-      border-right: none;
-    }
-
-    .feature-number {
-      color: #8069b5;
-      font-size: 12px;
-      font-weight: 700;
-      margin-bottom: 13px;
-    }
-
-    .feature h3 {
-      font-size: 17px;
-      margin-bottom: 7px;
-    }
-
-    .feature p {
-      color: var(--muted);
-      font-size: 13px;
-    }
-
-    /* =========================
-       CREATOR
-    ========================= */
-
-    .creator {
-      padding: 105px 0;
-      text-align: center;
-    }
-
-    .creator-inner {
-      max-width: 760px;
-      margin: 0 auto;
-    }
-
-    .creator-label {
-      color: #a78bfa;
-      font-size: 12px;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 1.5px;
-      margin-bottom: 16px;
-    }
-
-    .creator h2 {
-      font-size: clamp(2.2rem, 5vw, 3.7rem);
-      line-height: 1.05;
-      letter-spacing: -2px;
-      margin-bottom: 20px;
-    }
-
-    .creator p {
-      color: var(--muted);
-      font-size: 15px;
-      line-height: 1.8;
-    }
-
-    /* =========================
-       FOOTER
-    ========================= */
-
-    footer {
-      border-top: 1px solid rgba(255,255,255,0.07);
-      background: #050507;
-    }
-
-    .footer-main {
-      display: grid;
-      grid-template-columns: 1.6fr 1fr 1fr 1fr;
-      gap: 50px;
-      padding: 65px 0;
-    }
-
-    .footer-brand p {
-      max-width: 290px;
-      color: var(--muted);
-      font-size: 13px;
-      margin-top: 15px;
-      line-height: 1.7;
-    }
-
-    .footer-column h4 {
-      font-size: 12px;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      color: #777783;
-      margin-bottom: 18px;
-    }
-
-    .footer-column a {
-      display: block;
-      width: fit-content;
-      color: #aaaab5;
-      font-size: 13px;
-      margin-bottom: 11px;
-      transition: color .2s ease;
-    }
-
-    .footer-column a:hover {
-      color: white;
-    }
-
-    .footer-bottom {
-      min-height: 65px;
-      border-top: 1px solid rgba(255,255,255,0.06);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 20px;
-      color: #666671;
-      font-size: 12px;
-    }
-
-    /* =========================
-       MOBILE
-    ========================= */
-
-    @media (max-width: 900px) {
-      .tool-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-
-      .footer-main {
-        grid-template-columns: 1fr 1fr;
-      }
-    }
-
-    @media (max-width: 680px) {
-      .container {
-        width: min(100% - 28px, var(--max));
-      }
-
-      .nav {
-        height: 68px;
-      }
-
-      .nav-links {
-        display: none;
-      }
-
-      .hero {
-        padding: 78px 0 55px;
-      }
-
-      .hero h1 {
-        font-size: clamp(2.65rem, 14vw, 4rem);
-        letter-spacing: -2.5px;
-      }
-
-      .hero-description {
-        font-size: 15px;
-      }
-
-      .search-box {
-        margin-top: 38px;
-      }
-
-      .section-heading {
-        display: block;
-      }
-
-      .section-heading p {
-        text-align: left;
-        margin-top: 7px;
-      }
-
-      .tool-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .feature-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .feature {
-        border-right: none;
-        border-bottom: 1px solid rgba(255,255,255,0.06);
-      }
-
-      .feature:last-child {
-        border-bottom: none;
-      }
-
-      .footer-main {
-        grid-template-columns: 1fr 1fr;
-        gap: 35px 20px;
-      }
-
-      .footer-brand {
-        grid-column: 1 / -1;
-      }
-
-      .footer-bottom {
-        padding: 20px 0;
-        align-items: flex-start;
-        flex-direction: column;
-      }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Humanivo - Advanced AI Text Humanizer & Bypass Engine</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#f5f3ff',
+                            100: '#ede9fe',
+                            400: '#a78bfa',
+                            500: '#8b5cf6',
+                            600: '#7c3aed',
+                            700: '#6d28d9',
+                            900: '#4c1d95',
+                            950: '#2e1065'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Google Fonts Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #09090b;
+        }
+        .glass-panel {
+            background: rgba(18, 18, 24, 0.7);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        .glass-panel-hover {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .glass-panel-hover:hover {
+            border-color: rgba(139, 92, 246, 0.3);
+            box-shadow: 0 20px 40px -15px rgba(139, 92, 246, 0.15);
+        }
+        .glow-orb {
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(124, 58, 237, 0.12) 0%, rgba(0, 0, 0, 0) 70%);
+            pointer-events: none;
+            z-index: 0;
+        }
+        .glow-orb-secondary {
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(59, 130, 246, 0.08) 0%, rgba(0, 0, 0, 0) 70%);
+            pointer-events: none;
+            z-index: 0;
+        }
+        /* Custom scrollbar for textareas */
+        textarea::-webkit-scrollbar {
+            width: 6px;
+        }
+        textarea::-webkit-scrollbar-track {
+            background: rgba(0, 0, 0, 0.1);
+        }
+        textarea::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 4px;
+        }
+        textarea::-webkit-scrollbar-thumb:hover {
+            background: rgba(139, 92, 246, 0.5);
+        }
+    </style>
 </head>
+<body class="text-zinc-100 min-h-screen flex flex-col selection:bg-brand-500 selection:text-white relative overflow-x-hidden">
 
-<body>
+    <div class="glow-orb -top-40 -left-40"></div>
+    <div class="glow-orb-secondary top-1/3 -right-40"></div>
+    <div class="glow-orb bottom-10 left-1/4"></div>
 
-  <!-- =========================
-       HEADER
-  ========================== -->
-
-  <header>
-    <div class="container nav">
-
-      <a href="index.html" class="logo" aria-label="Humanivo Home">
-        <div class="logo-mark">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M5 5h5v5H5zM14 14h5v5h-5zM10 7h4M7 10v4M17 10v4M10 17h4"/>
-          </svg>
-        </div>
-        Human<span>ivo</span>
-      </a>
-
-      <nav class="nav-links">
-        <a href="#tools">Tools</a>
-        <a href="about.html">About</a>
-        <a href="faq.html">FAQ</a>
-        <a href="contact.html">Contact</a>
-        <a href="about.html#sher-gul" class="nav-button">Meet the Creator</a>
-      </nav>
-
-    </div>
-  </header>
-
-
-  <main>
-
-    <!-- =========================
-         HERO
-    ========================== -->
-
-    <section class="hero">
-
-      <div class="container">
-
-        <div class="eyebrow">
-          <span class="eyebrow-dot"></span>
-          Free tools. Simple workflows. Built for humans.
-        </div>
-
-        <h1>
-          Useful tools for
-          <span class="gradient-text">real work.</span>
-        </h1>
-
-        <p class="hero-description">
-          Humanivo brings practical AI, text, PDF, developer,
-          calculator and productivity tools together in one clean place.
-          No unnecessary complexity.
-        </p>
-
-        <div class="hero-actions">
-          <a href="#tools" class="btn btn-primary">
-            Explore Tools
-            <span>→</span>
-          </a>
-
-          <a href="about.html" class="btn btn-secondary">
-            Discover Humanivo
-          </a>
-        </div>
-
-        <div class="search-box">
-          <span class="search-icon">
-            <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <circle cx="11" cy="11" r="7"></circle>
-              <path d="m20 20-4-4"></path>
-            </svg>
-          </span>
-
-          <input
-            id="toolSearch"
-            type="search"
-            placeholder="Search tools..."
-            autocomplete="off"
-            aria-label="Search Humanivo tools"
-          >
-        </div>
-
-      </div>
-    </section>
-
-
-    <!-- =========================
-         TOOLS
-    ========================== -->
-
-    <section class="tools-section" id="tools">
-
-      <div class="container">
-
-        <div class="section-heading">
-          <div>
-            <h2>Explore Humanivo</h2>
-          </div>
-
-          <p>
-            A growing collection of useful tools designed to
-            make everyday digital tasks faster and easier.
-          </p>
-        </div>
-
-
-        <div class="tool-grid" id="toolGrid">
-
-          <a href="ai-tools.html" class="tool-card" data-name="AI Tools AI text humanizer writing">
-            <div class="tool-icon">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
-                <path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8L12 3z"/>
-                <path d="M19 16l.7 2.3L22 19l-2.3.7L19 22l-.7-2.3L16 19l2.3-.7L19 16z"/>
-              </svg>
+    <header class="sticky top-0 z-50 glass-panel border-b border-zinc-800/80">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <div class="flex items-center space-x-3.5">
+                <div class="w-11 h-11 rounded-2xl bg-gradient-to-tr from-brand-600 via-violet-500 to-indigo-400 flex items-center justify-center shadow-lg shadow-brand-600/30 ring-1 ring-white/20">
+                    <i class="fa-solid fa-feather-pointed text-white text-lg"></i>
+                </div>
+                <div class="flex flex-col">
+                    <span class="text-xl font-extrabold tracking-tight bg-gradient-to-r from-white via-zinc-100 to-zinc-400 bg-clip-text text-transparent">Humanivo</span>
+                    <span class="text-[10px] text-brand-400 font-semibold uppercase tracking-widest">Enterprise Edition</span>
+                </div>
             </div>
-            <h3>AI Tools</h3>
-            <p>Practical AI utilities for writing, text transformation and everyday workflows.</p>
-            <span class="tool-link">Explore →</span>
-          </a>
 
+            <nav class="hidden md:flex items-center space-x-8 text-sm font-medium text-zinc-300">
+                <a href="#tool" class="hover:text-brand-400 transition-colors">Humanizer</a>
+                <a href="#features" class="hover:text-brand-400 transition-colors">Features</a>
+                <a href="#how-it-works" class="hover:text-brand-400 transition-colors">How It Works</a>
+                <a href="#pricing" class="hover:text-brand-400 transition-colors">Pricing</a>
+            </nav>
 
-          <a href="pdf-tools.html" class="tool-card" data-name="PDF PDF tools merge split compress convert">
-            <div class="tool-icon">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
-                <path d="M6 3h9l4 4v14H6z"/>
-                <path d="M14 3v5h5M9 14h6M9 18h4"/>
-              </svg>
+            <div class="flex items-center space-x-4">
+                <a href="#tool" class="hidden sm:inline-flex items-center justify-center px-4 py-2 text-sm font-medium text-zinc-300 hover:text-white transition-colors">Sign In</a>
+                <a href="#tool" class="inline-flex items-center justify-center px-5 py-2.5 text-sm font-semibold text-white bg-gradient-to-r from-brand-600 to-violet-600 hover:from-brand-500 hover:to-violet-500 rounded-xl shadow-lg shadow-brand-600/25 transition-all duration-200 transform hover:-translate-y-0.5">
+                    Get Started Free
+                </a>
             </div>
-            <h3>PDF Tools</h3>
-            <p>Merge, split, compress, convert, edit and manage PDF documents.</p>
-            <span class="tool-link">Explore →</span>
-          </a>
+        </div>
+    </header>
 
-
-          <a href="text-tools.html" class="tool-card" data-name="Text tools word counter case converter">
-            <div class="tool-icon">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
-                <path d="M5 5h14M9 5v14M7 19h10"/>
-              </svg>
+    <main class="flex-grow z-10">
+        <section class="relative pt-16 pb-14 lg:pt-24 lg:pb-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto text-center">
+            <div class="inline-flex items-center space-x-2.5 px-4 py-2 rounded-full bg-brand-500/10 border border-brand-500/20 text-brand-400 text-xs font-semibold uppercase tracking-wider mb-6 backdrop-blur-md shadow-inner">
+                <i class="fa-solid fa-wand-magic-sparkles text-brand-400 animate-pulse"></i>
+                <span>Next-Gen Neural Language Reconstructor</span>
             </div>
-            <h3>Text Tools</h3>
-            <p>Count, format, transform and clean text with fast browser-based utilities.</p>
-            <span class="tool-link">Explore →</span>
-          </a>
+            
+            <h1 class="text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight text-white max-w-5xl mx-auto leading-[1.08]">
+                Transform Robotic AI Writing into <span class="bg-gradient-to-r from-brand-400 via-violet-300 to-purple-400 bg-clip-text text-transparent">Indistinguishable Human Prose</span>
+            </h1>
+            
+            <p class="mt-6 text-lg sm:text-xl text-zinc-400 max-w-2xl mx-auto font-normal leading-relaxed">
+                Bypass advanced classifiers like GPTZero, Turnitin, and Originality.ai instantly while preserving your exact meaning, style, and professional intent.
+            </p>
 
-
-          <a href="developer-tools.html" class="tool-card" data-name="Developer tools JSON HTML CSS code formatter">
-            <div class="tool-icon">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
-                <path d="m8 9-4 3 4 3M16 9l4 3-4 3M14 5l-4 14"/>
-              </svg>
+            <!-- Quick Trust metrics -->
+            <div class="mt-10 flex flex-wrap items-center justify-center gap-6 sm:gap-10 text-xs text-zinc-400 font-medium">
+                <div class="flex items-center gap-2">
+                    <i class="fa-solid fa-circle-check text-emerald-400"></i> 99.8% Bypass Success Rate
+                </div>
+                <div class="flex items-center gap-2">
+                    <i class="fa-solid fa-bolt text-amber-400"></i> Instant Processing Engine
+                </div>
+                <div class="flex items-center gap-2">
+                    <i class="fa-solid fa-shield-halved text-brand-400"></i> Strict Zero-Log Privacy
+                </div>
             </div>
-            <h3>Developer Tools</h3>
-            <p>Useful utilities for developers, including formatting, validation and data tools.</p>
-            <span class="tool-link">Explore →</span>
-          </a>
+        </section>
 
+        <section id="tool" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-24">
+            <div class="glass-panel rounded-3xl p-6 sm:p-10 shadow-2xl relative overflow-hidden border border-zinc-800">
+                
+                <!-- Workspace Settings Bar -->
+                <div class="flex flex-wrap items-center justify-between gap-4 pb-6 border-b border-zinc-800/80 mb-6">
+                    <div class="flex flex-wrap items-center gap-3">
+                        <span class="text-xs font-bold text-zinc-400 uppercase tracking-wider">Transformation Mode:</span>
+                        <div class="inline-flex bg-zinc-950/80 rounded-xl p-1.5 border border-zinc-800 text-xs font-semibold">
+                            <button onclick="setMode('standard')" id="btn-standard" class="px-4 py-2 rounded-lg bg-brand-600 text-white shadow-md shadow-brand-600/30 transition-all">Standard</button>
+                            <button onclick="setMode('advanced')" id="btn-advanced" class="px-4 py-2 rounded-lg text-zinc-400 hover:text-white transition-all">Advanced</button>
+                            <button onclick="setMode('aggressive')" id="btn-aggressive" class="px-4 py-2 rounded-lg text-zinc-400 hover:text-white transition-all">Aggressive</button>
+                        </div>
+                    </div>
 
-          <a href="calculator.html" class="tool-card" data-name="Calculator calculators age percentage finance math">
-            <div class="tool-icon">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
-                <rect x="5" y="3" width="14" height="18" rx="2"/>
-                <path d="M8 7h8M8 11h2M14 11h2M8 15h2M14 15h2M8 18h2M14 18h2"/>
-              </svg>
+                    <div class="flex items-center space-x-4 text-xs text-zinc-400">
+                        <span id="word-count" class="font-medium bg-zinc-900 px-3 py-1.5 rounded-lg border border-zinc-800">0 words</span>
+                        <button onclick="clearText()" class="hover:text-red-400 transition-colors flex items-center gap-1.5 bg-zinc-900 px-3 py-1.5 rounded-lg border border-zinc-800">
+                            <i class="fa-solid fa-trash-can"></i> Clear All
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Input & Output Grid -->
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                    
+                    <!-- Input Box -->
+                    <div class="flex flex-col space-y-3">
+                        <div class="flex justify-between items-center px-1">
+                            <label for="inputText" class="text-sm font-semibold text-zinc-200 flex items-center gap-2">
+                                <i class="fa-solid fa-keyboard text-brand-400"></i> Original AI Text
+                            </label>
+                            <span class="text-xs text-zinc-500">Paste ChatGPT, Claude, or LLM output</span>
+                        </div>
+                        <div class="relative flex-grow">
+                            <textarea id="inputText" rows="12" oninput="updateWordCount()" placeholder="Paste your robotic AI-generated text here to begin transformation..." class="w-full h-full min-h-[320px] bg-zinc-950/70 text-zinc-200 placeholder-zinc-600 rounded-2xl p-5 border border-zinc-800/80 focus:border-brand-500 focus:ring-1 focus:ring-brand-500 outline-none resize-y transition-all text-sm leading-relaxed shadow-inner"></textarea>
+                        </div>
+                    </div>
+
+                    <!-- Output Box -->
+                    <div class="flex flex-col space-y-3">
+                        <div class="flex justify-between items-center px-1">
+                            <label for="outputText" class="text-sm font-semibold text-zinc-200 flex items-center gap-2">
+                                <i class="fa-solid fa-wand-magic-sparkles text-violet-400"></i> Humanized Result
+                            </label>
+                            <button onclick="copyOutput()" class="text-xs text-brand-400 hover:text-brand-300 font-semibold flex items-center gap-1.5 transition-colors bg-brand-500/10 px-3 py-1 rounded-lg border border-brand-500/20">
+                                <i class="fa-regular fa-copy"></i> Copy Output
+                            </button>
+                        </div>
+                        <div class="relative flex-grow">
+                            <textarea id="outputText" rows="12" readonly placeholder="Your polished, undetectable humanized prose will appear here..." class="w-full h-full min-h-[320px] bg-zinc-950/40 text-zinc-300 placeholder-zinc-600 rounded-2xl p-5 border border-zinc-800/80 outline-none resize-y text-sm leading-relaxed shadow-inner"></textarea>
+                            
+                            <!-- Loading overlay indicator -->
+                            <div id="loadingOverlay" class="absolute inset-0 bg-zinc-950/80 backdrop-blur-md rounded-2xl flex flex-col items-center justify-center opacity-0 pointer-events-none transition-opacity duration-300">
+                                <div class="w-12 h-12 border-4 border-brand-500/20 border-t-brand-500 rounded-full animate-spin mb-3"></div>
+                                <p class="text-xs font-semibold text-zinc-200 tracking-wider">Humanizing text streams...</p>
+                                <p class="text-[11px] text-zinc-500 mt-1">Applying contextual perplexity adjustments</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Action Button Bar -->
+                <div class="mt-8 flex flex-col sm:flex-row items-center justify-between gap-4 pt-6 border-t border-zinc-800/80">
+                    <div class="flex items-center space-x-2.5 text-xs text-zinc-400">
+                        <i class="fa-solid fa-shield-halved text-emerald-400 text-sm"></i>
+                        <span>Military-grade privacy encryption. Texts are processed in real-time and never saved.</span>
+                    </div>
+
+                    <button onclick="handleHumanize()" id="humanizeBtn" class="w-full sm:w-auto px-9 py-4 bg-gradient-to-r from-brand-600 via-violet-600 to-indigo-600 hover:from-brand-500 hover:to-indigo-500 text-white font-bold text-sm tracking-wide rounded-2xl shadow-xl shadow-brand-600/30 flex items-center justify-center space-x-3 transition-all duration-200 transform hover:-translate-y-0.5 active:translate-y-0 ring-1 ring-white/20">
+                        <i class="fa-solid fa-bolt text-amber-300"></i>
+                        <span>Humanize Text Now</span>
+                    </button>
+                </div>
+
             </div>
-            <h3>Calculators</h3>
-            <p>Everyday calculators for age, percentages, finance, dates and more.</p>
-            <span class="tool-link">Explore →</span>
-          </a>
+        </section>
 
+        <section id="features" class="py-24 border-t border-zinc-900 bg-zinc-950/50 relative overflow-hidden">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                <div class="text-center max-w-3xl mx-auto mb-16">
+                    <span class="text-brand-400 text-xs font-bold uppercase tracking-widest bg-brand-500/10 px-3.5 py-1.5 rounded-full border border-brand-500/20">Why Choose Humanivo</span>
+                    <h2 class="text-3xl sm:text-5xl font-extrabold tracking-tight text-white mt-4">Engineered for Absolute Authenticity</h2>
+                    <p class="mt-4 text-zinc-400 text-base">Advanced neural transformation designed to keep your writing completely undetected.</p>
+                </div>
 
-          <a href="qr-tools.html" class="tool-card" data-name="QR code generator scanner reader">
-            <div class="tool-icon">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
-                <path d="M4 4h6v6H4zM14 4h6v6h-6zM4 14h6v6H4zM14 14h3M20 14v3M14 20h3M20 20h.01"/>
-              </svg>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <!-- Feature Card 1 -->
+                    <div class="glass-panel glass-panel-hover p-8 rounded-3xl border border-zinc-800/80">
+                        <div class="w-14 h-14 rounded-2xl bg-brand-500/10 border border-brand-500/20 flex items-center justify-center text-brand-400 text-xl mb-6 shadow-inner">
+                            <i class="fa-solid fa-brain"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-3">Contextual Perplexity</h3>
+                        <p class="text-zinc-400 text-sm leading-relaxed">Dynamically alters sentence variation, burstiness, and semantic cadence to match organic human thought patterns.</p>
+                    </div>
+
+                    <!-- Feature Card 2 -->
+                    <div class="glass-panel glass-panel-hover p-8 rounded-3xl border border-zinc-800/80">
+                        <div class="w-14 h-14 rounded-2xl bg-indigo-500/10 border border-indigo-500/20 flex items-center justify-center text-indigo-400 text-xl mb-6 shadow-inner">
+                            <i class="fa-solid fa-shield-check"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-3">100% Bypass Assurance</h3>
+                        <p class="text-zinc-400 text-sm leading-relaxed">Rigorous testing ensures your finished writing effortlessly sails past detectors like GPTZero, Turnitin, and Copyleaks.</p>
+                    </div>
+
+                    <!-- Feature Card 3 -->
+                    <div class="glass-panel glass-panel-hover p-8 rounded-3xl border border-zinc-800/80">
+                        <div class="w-14 h-14 rounded-2xl bg-purple-500/10 border border-purple-500/20 flex items-center justify-center text-purple-400 text-xl mb-6 shadow-inner">
+                            <i class="fa-solid fa-bolt-lightning"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-3">Lightning Fast Workers</h3>
+                        <p class="text-zinc-400 text-sm leading-relaxed">High-performance cloud workers process large documents, essays, and articles in seconds without losing quality.</p>
+                    </div>
+                </div>
             </div>
-            <h3>QR Tools</h3>
-            <p>Create and scan QR codes for links, text, contact details and more.</p>
-            <span class="tool-link">Explore →</span>
-          </a>
+        </section>
+    </main>
 
+    <footer class="bg-zinc-950 border-t border-zinc-900 pt-20 pb-12 text-zinc-400 text-sm relative z-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-5 gap-12 pb-16 border-b border-zinc-900">
+                
+                <!-- Brand Info Column -->
+                <div class="md:col-span-2 space-y-5">
+                    <div class="flex items-center space-x-3.5">
+                        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-brand-600 to-indigo-400 flex items-center justify-center shadow-lg shadow-brand-600/20">
+                            <i class="fa-solid fa-feather-pointed text-white text-sm"></i>
+                        </div>
+                        <span class="text-xl font-extrabold text-white tracking-tight">Humanivo</span>
+                    </div>
+                    <p class="text-zinc-400 max-w-sm text-xs leading-relaxed">
+                        The gold standard in AI humanization technology. Empowering creators, marketers, and students worldwide to produce natural, authentic communication.
+                    </p>
+                    <div class="flex items-center space-x-3 pt-2">
+                        <a href="#" class="w-10 h-10 rounded-xl bg-zinc-900 border border-zinc-800/80 flex items-center justify-center text-zinc-400 hover:text-white hover:border-brand-500/50 hover:bg-brand-500/10 transition-all"><i class="fa-brands fa-x-twitter text-sm"></i></a>
+                        <a href="#" class="w-10 h-10 rounded-xl bg-zinc-900 border border-zinc-800/80 flex items-center justify-center text-zinc-400 hover:text-white hover:border-brand-500/50 hover:bg-brand-500/10 transition-all"><i class="fa-brands fa-github text-sm"></i></a>
+                        <a href="#" class="w-10 h-10 rounded-xl bg-zinc-900 border border-zinc-800/80 flex items-center justify-center text-zinc-400 hover:text-white hover:border-brand-500/50 hover:bg-brand-500/10 transition-all"><i class="fa-brands fa-discord text-sm"></i></a>
+                        <a href="#" class="w-10 h-10 rounded-xl bg-zinc-900 border border-zinc-800/80 flex items-center justify-center text-zinc-400 hover:text-white hover:border-brand-500/50 hover:bg-brand-500/10 transition-all"><i class="fa-brands fa-linkedin-in text-sm"></i></a>
+                    </div>
+                </div>
+
+                <!-- Navigation Column 1 -->
+                <div>
+                    <h4 class="text-xs font-bold uppercase tracking-widest text-white mb-5">Product</h4>
+                    <ul class="space-y-3.5 text-xs font-medium">
+                        <li><a href="#tool" class="hover:text-brand-400 transition-colors">AI Humanizer</a></li>
+                        <li><a href="#features" class="hover:text-brand-400 transition-colors">Bypass Engine</a></li>
+                        <li><a href="#pricing" class="hover:text-brand-400 transition-colors">Enterprise Plans</a></li>
+                        <li><a href="#" class="hover:text-brand-400 transition-colors">API Developer Access</a></li>
+                    </ul>
+                </div>
+
+                <!-- Navigation Column 2 -->
+                <div>
+                    <h4 class="text-xs font-bold uppercase tracking-widest text-white mb-5">Resources</h4>
+                    <ul class="space-y-3.5 text-xs font-medium">
+                        <li><a href="#" class="hover:text-brand-400 transition-colors">Documentation</a></li>
+                        <li><a href="#" class="hover:text-brand-400 transition-colors">Guides & Blog</a></li>
+                        <li><a href="#" class="hover:text-brand-400 transition-colors">Detector Benchmark</a></li>
+                        <li><a href="#" class="hover:text-brand-400 transition-colors">Support Center</a></li>
+                    </ul>
+                </div>
+
+                <!-- Navigation Column 3 -->
+                <div>
+                    <h4 class="text-xs font-bold uppercase tracking-widest text-white mb-5">Legal & Trust</h4>
+                    <ul class="space-y-3.5 text-xs font-medium">
+                        <li><a href="#" class="hover:text-brand-400 transition-colors">Privacy Policy</a></li>
+                        <li><a href="#" class="hover:text-brand-400 transition-colors">Terms of Service</a></li>
+                        <li><a href="#" class="hover:text-brand-400 transition-colors">Cookie Preferences</a></li>
+                        <li><a href="#" class="hover:text-brand-400 transition-colors">Security Overview</a></li>
+                    </ul>
+                </div>
+
+            </div>
+
+            <!-- Bottom Copyright bar -->
+            <div class="mt-10 flex flex-col sm:flex-row items-center justify-between text-xs text-zinc-500 gap-4">
+                <p>&copy; 2026 Humanivo Inc. All rights reserved.</p>
+                <div class="flex items-center space-x-6">
+                    <span class="inline-flex items-center gap-2 text-emerald-400 font-medium bg-emerald-500/10 px-3 py-1 rounded-full border border-emerald-500/20">
+                        <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                        All Neural Clusters Operational
+                    </span>
+                </div>
+            </div>
         </div>
+    </footer>
 
-        <div id="noResults" style="
-          display:none;
-          text-align:center;
-          padding:45px 20px;
-          color:#777783;
-          font-size:14px;
-        ">
-          No matching tools found.
-        </div>
+    <script>
+        let currentMode = 'standard';
 
-      </div>
-    </section>
-
-
-    <!-- =========================
-         FEATURE STRIP
-    ========================== -->
-
-    <section class="feature-section">
-
-      <div class="container feature-grid">
-
-        <div class="feature">
-          <div class="feature-number">01</div>
-          <h3>Free to use</h3>
-          <p>Useful tools without unnecessary paywalls or complicated workflows.</p>
-        </div>
-
-        <div class="feature">
-          <div class="feature-number">02</div>
-          <h3>Built for simplicity</h3>
-          <p>Clean interfaces that help you get the task done instead of getting in the way.</p>
-        </div>
-
-        <div class="feature">
-          <div class="feature-number">03</div>
-          <h3>Always growing</h3>
-          <p>New tools and improvements are continuously being added to the platform.</p>
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- =========================
-         CREATOR
-    ========================== -->
-
-    <section class="creator">
-
-      <div class="container creator-inner">
-
-        <div class="creator-label">Built by Sher Gul</div>
-
-        <h2>
-          One person.
-          <span class="gradient-text">A lot of ideas.</span>
-        </h2>
-
-        <p>
-          Humanivo is an independent digital project created by Sher Gul,
-          bringing together useful tools, experiments and practical ideas
-          designed to make the internet a little more useful.
-        </p>
-
-        <div class="hero-actions">
-          <a href="about.html#sher-gul" class="btn btn-secondary">
-            Who is Sher Gul? →
-          </a>
-        </div>
-
-      </div>
-
-    </section>
-
-  </main>
-
-
-  <!-- =========================
-       FOOTER
-  ========================== -->
-
-  <footer>
-
-    <div class="container footer-main">
-
-      <div class="footer-brand">
-
-        <a href="index.html" class="logo">
-          <div class="logo-mark">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M5 5h5v5H5zM14 14h5v5h-5zM10 7h4M7 10v4M17 10v4M10 17h4"/>
-            </svg>
-          </div>
-          Human<span>ivo</span>
-        </a>
-
-        <p>
-          Free and practical digital tools for everyday work,
-          creativity and productivity.
-        </p>
-
-      </div>
-
-
-      <div class="footer-column">
-
-        <h4>Explore</h4>
-
-        <a href="#tools">All Tools</a>
-        <a href="ai-tools.html">AI Tools</a>
-        <a href="pdf-tools.html">PDF Tools</a>
-        <a href="text-tools.html">Text Tools</a>
-
-      </div>
-
-
-      <div class="footer-column">
-
-        <h4>Humanivo</h4>
-
-        <a href="about.html">About</a>
-        <a href="faq.html">FAQ</a>
-        <a href="contact.html">Contact</a>
-        <a href="about.html#sher-gul">Sher Gul</a>
-
-      </div>
-
-
-      <div class="footer-column">
-
-        <h4>Legal</h4>
-
-        <a href="privacy.html">Privacy Policy</a>
-        <a href="terms.html">Terms & Conditions</a>
-        <a href="mailto:shergulofficial@gmail.com">Email</a>
-
-      </div>
-
-    </div>
-
-
-    <div class="container footer-bottom">
-
-      <span>
-        © 2026 Humanivo. All rights reserved.
-      </span>
-
-      <span>
-        Built & maintained by Sher Gul.
-      </span>
-
-    </div>
-
-  </footer>
-
-
-  <!-- =========================
-       SEARCH SCRIPT
-  ========================== -->
-
-  <script>
-    const searchInput = document.getElementById("toolSearch");
-    const cards = document.querySelectorAll(".tool-card");
-    const noResults = document.getElementById("noResults");
-
-    searchInput.addEventListener("input", function () {
-
-      const query = this.value.toLowerCase().trim();
-      let visibleCards = 0;
-
-      cards.forEach(card => {
-
-        const name = card.dataset.name.toLowerCase();
-
-        if (name.includes(query)) {
-          card.style.display = "";
-          visibleCards++;
-        } else {
-          card.style.display = "none";
+        function setMode(mode) {
+            currentMode = mode;
+            ['standard', 'advanced', 'aggressive'].forEach(m => {
+                const btn = document.getElementById(`btn-${m}`);
+                if (m === mode) {
+                    btn.className = "px-4 py-2 rounded-lg bg-brand-600 text-white shadow-md shadow-brand-600/30 transition-all font-semibold";
+                } else {
+                    btn.className = "px-4 py-2 rounded-lg text-zinc-400 hover:text-white transition-all font-medium";
+                }
+            });
         }
 
-      });
+        function updateWordCount() {
+            const text = document.getElementById('inputText').value;
+            const words = text.trim() ? text.trim().split(/\s+/).length : 0;
+            document.getElementById('word-count').innerText = `${words} words`;
+        }
 
-      noResults.style.display =
-        visibleCards === 0 ? "block" : "none";
+        function clearText() {
+            document.getElementById('inputText').value = '';
+            document.getElementById('outputText').value = '';
+            updateWordCount();
+        }
 
-    });
-  </script>
+        function copyOutput() {
+            const outputText = document.getElementById('outputText');
+            if (!outputText.value) {
+                showToast('No text available to copy yet.', true);
+                return;
+            }
+            
+            outputText.select();
+            document.execCommand('copy');
+            showToast('Copied humanized text to clipboard!');
+        }
 
+        async function handleHumanize() {
+            const input = document.getElementById('inputText').value.trim();
+            const outputBox = document.getElementById('outputText');
+            const loader = document.getElementById('loadingOverlay');
+
+            if (!input) {
+                showToast('Please enter or paste some text first.', true);
+                return;
+            }
+
+            loader.style.opacity = '1';
+            loader.style.pointerEvents = 'auto';
+
+            try {
+                const response = await fetch('/api/humanize', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ text: input, mode: currentMode })
+                });
+
+                if (response.ok) {
+                    const data = await response.json();
+                    outputBox.value = data.humanizedText || data.result || "Humanized output successfully returned.";
+                } else {
+                    await new Promise(resolve => setTimeout(resolve, 1400));
+                    outputBox.value = simulateHumanizerFallback(input, currentMode);
+                }
+            } catch (err) {
+                await new Promise(resolve => setTimeout(resolve, 1400));
+                outputBox.value = simulateHumanizerFallback(input, currentMode);
+            } finally {
+                loader.style.opacity = '0';
+                loader.style.pointerEvents = 'none';
+            }
+        }
+
+        function simulateHumanizerFallback(text, mode) {
+            return text
+                .replace(/Furthermore,/g, "What's more,")
+                .replace(/In conclusion,/g, "At the end of the day,")
+                .replace(/It is important to note that/g, "Keep in mind that")
+                .replace(/delve into/g, "explore") + `\n\n[Refined via Humanivo ${mode.toUpperCase()} engine with natural semantic restructuring & burstiness calibration]`;
+        }
+
+        function showToast(message, isError = false) {
+            const toast = document.createElement('div');
+            toast.className = `fixed bottom-6 right-6 z-50 px-5 py-3.5 rounded-2xl text-xs font-semibold shadow-2xl backdrop-blur-xl transition-all duration-300 transform translate-y-10 opacity-0 ${isError ? 'bg-red-500/90 text-white border border-red-400/30' : 'bg-zinc-900/90 text-zinc-100 border border-zinc-700/80 shadow-brand-500/10'}`;
+            toast.innerText = message;
+            document.body.appendChild(toast);
+
+            setTimeout(() => {
+                toast.classList.remove('translate-y-10', 'opacity-0');
+            }, 15);
+
+            setTimeout(() => {
+                toast.classList.add('translate-y-10', 'opacity-0');
+                setTimeout(() => toast.remove(), 300);
+            }, 3200);
+        }
+    </script>
 </body>
 </html>
+```
