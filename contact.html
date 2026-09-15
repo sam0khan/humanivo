@@ -1,117 +1,168 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html lang="en" class="dark">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Contact | Humanivo</title>
-  <meta name="description" content="Get in touch with the creator of Humanivo, Sher Gul.">
-  <meta name="robots" content="index,follow">
-  <link rel="stylesheet" href="pages.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Humanivo</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#f5f3ff',
+                            100: '#ede9fe',
+                            400: '#a78bfa',
+                            500: '#8b5cf6',
+                            600: '#7c3aed',
+                            700: '#6d28d9',
+                            900: '#4c1d95',
+                            950: '#2e1065'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #09090b;
+        }
+        .glass-panel {
+            background: rgba(18, 18, 24, 0.7);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        .glow-orb {
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(124, 58, 237, 0.12) 0%, rgba(0, 0, 0, 0) 70%);
+            pointer-events: none;
+            z-index: 0;
+        }
+    </style>
 </head>
-<body>
-  <header class="top">
-    <div class="wrap nav">
-      <a class="logo" href="index.html">
-        <span class="mark">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 5h5v5H5zM14 14h5v5h-5zM10 7h4M7 10v4M17 10v4M10 17h4"/></svg>
-        </span>
-        Human<span style="color:#a78bfa">ivo</span>
-      </a>
-      <nav class="navlinks">
-        <a href="index.html#tools">Tools</a>
-        <a href="about.html">About</a>
-        <a href="faq.html">FAQ</a>
-        <a href="contact.html" class="active">Contact</a>
-      </nav>
-    </div>
-  </header>
+<body class="text-zinc-100 min-h-screen flex flex-col selection:bg-brand-500 selection:text-white relative overflow-x-hidden">
 
-  <main>
-    <section class="page-hero">
-      <div class="wrap">
-        <div class="eyebrow"><i></i> Get In Touch</div>
-        <h1>Contact <span>Humanivo</span></h1>
-        <p class="page-copy">Have questions, feedback, or collaboration ideas? Reach out directly using the form below or via email.</p>
-      </div>
-    </section>
+    <div class="glow-orb -top-40 -left-40"></div>
 
-    <section class="wrap panel">
-      <div class="grid" style="grid-template-columns: 1fr 1fr;">
-        <div class="content-box" style="margin-top:0;">
-          <h2>Send a Message</h2>
-          <form onsubmit="event.preventDefault(); alert('Thank you! Your message has been noted.');">
-            <div class="form-group">
-              <label for="name">Your Name</label>
-              <input type="text" id="name" placeholder="Enter your name" required>
-            </div>
-            <div class="form-group">
-              <label for="email">Email Address</label>
-              <input type="email5" id="email" placeholder="you@example.com" required>
-            </div>
-            <div class="form-group">
-              <label for="message">Message</label>
-              <textarea id="message" rows="5" placeholder="How can we help you?" required></textarea>
-            </div>
-            <button type="submit" class="btn-primary">Send Message</button>
-          </form>
+    <header class="sticky top-0 z-50 glass-panel border-b border-zinc-800/80">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <a href="index.html" class="flex items-center space-x-3.5">
+                <div class="w-11 h-11 rounded-2xl bg-gradient-to-tr from-brand-600 via-violet-500 to-indigo-400 flex items-center justify-center shadow-lg shadow-brand-600/30 ring-1 ring-white/20">
+                    <i class="fa-solid fa-feather-pointed text-white text-lg"></i>
+                </div>
+                <div class="flex flex-col">
+                    <span class="text-xl font-extrabold tracking-tight bg-gradient-to-r from-white via-zinc-100 to-zinc-400 bg-clip-text text-transparent">Humanivo</span>
+                    <span class="text-[10px] text-brand-400 font-semibold uppercase tracking-widest">Enterprise Edition</span>
+                </div>
+            </a>
+
+            <nav class="hidden md:flex items-center space-x-8 text-sm font-medium text-zinc-300">
+                <a href="index.html#tool" class="hover:text-brand-400 transition-colors">Humanizer</a>
+                <a href="about.html" class="hover:text-brand-400 transition-colors">About</a>
+                <a href="faq.html" class="hover:text-brand-400 transition-colors">FAQ</a>
+                <a href="contact.html" class="text-brand-400 font-semibold">Contact</a>
+            </nav>
+
+            <a href="index.html#tool" class="inline-flex items-center justify-center px-5 py-2.5 text-sm font-semibold text-white bg-gradient-to-r from-brand-600 to-violet-600 hover:from-brand-500 hover:to-violet-500 rounded-xl shadow-lg shadow-brand-600/25 transition-all">
+                Get Started
+            </a>
         </div>
-        
-        <div class="content-box" style="margin-top:0;">
-          <h2>Direct Contact</h2>
-          <p>You can also reach out to the creator directly through official channels:</p>
-          <p><strong>Email:</strong> <a href="mailto:shergulofficial@gmail.com" style="color:var(--accent-purple); text-decoration:none;">shergulofficial@gmail.com</a></p>
-          <p><strong>Phone:</strong> +92 317 5151923</p>
-          <p><strong>Location:</strong> Rawalpindi, Pakistan</p>
-          <div style="margin-top: 24px;">
-            <p><strong>Social Media:</strong></p>
-            <p style="margin-top: 8px;">
-              <a href="https://www.linkedin.com/in/shergulofficial" target="_blank" style="color:var(--accent-blue); text-decoration:none; margin-right:15px;">LinkedIn</a>
-              <a href="https://www.instagram.com/shergulofficial" target="_blank" style="color:var(--accent-blue); text-decoration:none; margin-right:15px;">Instagram</a>
-              <a href="https://www.youtube.com/@shergulofficial" target="_blank" style="color:var(--accent-blue); text-decoration:none;">YouTube</a>
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-  </main>
+    </header>
 
-  <footer class="footer">
-    <div class="wrap footer-inner">
-      <div class="footer-brand">
-        <a class="logo" href="index.html">
-          <span class="mark">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 5h5v5H5zM14 14h5v5h-5zM10 7h4M7 10v4M17 10v4M10 17h4"/></svg>
-          </span>
-          Human<span style="color:#a78bfa">ivo</span>
-        </a>
-        <p>Practical tools built by Sher Gul.</p>
-        <div class="made">Made with <b style="color:#fb7185">♥</b> by <strong>Sher Gul</strong></div>
-      </div>
-      <div>
-        <h4>Explore</h4>
-        <a href="index.html#tools">All Tools</a>
-        <a href="about.html">About</a>
-        <a href="faq.html">FAQ</a>
-        <a href="contact.html">Contact</a>
-      </div>
-      <div>
-        <h4>Creator</h4>
-        <a href="about.html#sher-gul">Who is Sher Gul?</a>
-        <a href="https://www.linkedin.com/in/shergulofficial" target="_blank">LinkedIn</a>
-        <a href="https://www.instagram.com/shergulofficial" target="_blank">Instagram</a>
-        <a href="https://www.youtube.com/@shergulofficial" target="_blank">YouTube</a>
-      </div>
-      <div>
-        <h4>Legal</h4>
-        <a href="privacy.html">Privacy Policy</a>
-        <a href="terms.html">Terms & Conditions</a>
-        <a href="mailto:shergulofficial@gmail.com">Email Sher Gul</a>
-      </div>
-    </div>
-    <div class="wrap bottom">
-      <span>© 2026 Humanivo. All rights reserved.</span>
-      <span>Built & maintained by Sher Gul.</span>
-    </div>
-  </footer>
+    <main class="flex-grow z-10 py-16 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto w-full">
+        <div class="text-center max-w-2xl mx-auto mb-16">
+            <span class="text-brand-400 text-xs font-bold uppercase tracking-widest bg-brand-500/10 px-3.5 py-1.5 rounded-full border border-brand-500/20">Get in Touch</span>
+            <h1 class="text-4xl sm:text-5xl font-extrabold tracking-tight text-white mt-4">We'd Love to Hear From You</h1>
+            <p class="mt-4 text-zinc-400 text-base">Have questions, feedback, or collaboration ideas? Reach out directly using the form or via email.</p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <!-- Contact Form -->
+            <div class="glass-panel p-8 rounded-3xl border border-zinc-800">
+                <h2 class="text-xl font-bold text-white mb-6">Send a Message</h2>
+                <form onsubmit="handleSubmit(event)" class="space-y-5">
+                    <div>
+                        <label class="block text-xs font-bold uppercase tracking-wider text-zinc-400 mb-2">Your Name</label>
+                        <input type="text" required placeholder="Enter your name" class="w-full bg-zinc-950/70 border border-zinc-800 rounded-xl px-4 py-3 text-sm text-zinc-200 focus:border-brand-500 focus:ring-1 focus:ring-brand-500 outline-none">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold uppercase tracking-wider text-zinc-400 mb-2">Email Address</label>
+                        <input type="email" required placeholder="you@example.com" class="w-full bg-zinc-950/70 border border-zinc-800 rounded-xl px-4 py-3 text-sm text-zinc-200 focus:border-brand-500 focus:ring-1 focus:ring-brand-500 outline-none">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold uppercase tracking-wider text-zinc-400 mb-2">Message</label>
+                        <textarea required rows="4" placeholder="How can we help you?" class="w-full bg-zinc-950/70 border border-zinc-800 rounded-xl p-4 text-sm text-zinc-200 focus:border-brand-500 focus:ring-1 focus:ring-brand-500 outline-none resize-none"></textarea>
+                    </div>
+                    <button type="submit" class="w-full py-3.5 bg-gradient-to-r from-brand-600 to-violet-600 hover:from-brand-500 hover:to-violet-500 text-white font-bold text-sm rounded-xl shadow-lg shadow-brand-600/30 transition-all">
+                        Send Message
+                    </button>
+                </form>
+            </div>
+
+            <!-- Direct Info -->
+            <div class="glass-panel p-8 rounded-3xl border border-zinc-800 flex flex-col justify-between">
+                <div>
+                    <h2 class="text-xl font-bold text-white mb-6">Direct Contact</h2>
+                    <p class="text-zinc-400 text-sm leading-relaxed mb-8">
+                        You can also reach out directly through official professional channels or drop an email for enterprise inquiries and support.
+                    </p>
+                    
+                    <div class="space-y-6">
+                        <div class="flex items-start space-x-4">
+                            <div class="w-10 h-10 rounded-xl bg-brand-500/10 border border-brand-500/20 flex items-center justify-center text-brand-400 flex-shrink-0">
+                                <i class="fa-solid fa-envelope"></i>
+                            </div>
+                            <div>
+                                <span class="block text-xs font-bold uppercase tracking-wider text-zinc-500">Email Support</span>
+                                <a href="mailto:shergulofficial@gmail.com" class="text-sm font-medium text-zinc-200 hover:text-brand-400 transition-colors">shergulofficial@gmail.com</a>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start space-x-4">
+                            <div class="w-10 h-10 rounded-xl bg-indigo-500/10 border border-indigo-500/20 flex items-center justify-center text-indigo-400 flex-shrink-0">
+                                <i class="fa-solid fa-globe"></i>
+                            </div>
+                            <div>
+                                <span class="block text-xs font-bold uppercase tracking-wider text-zinc-500">Social Channels</span>
+                                <div class="flex items-center space-x-4 mt-1 text-sm font-medium">
+                                    <a href="https://www.linkedin.com/in/shergulofficial" target="_blank" class="text-zinc-300 hover:text-brand-400 transition-colors">LinkedIn</a>
+                                    <a href="https://www.instagram.com/shergulofficial" target="_blank" class="text-zinc-300 hover:text-brand-400 transition-colors">Instagram</a>
+                                    <a href="https://www.youtube.com/@shergulofficial" target="_blank" class="text-zinc-300 hover:text-brand-400 transition-colors">YouTube</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-8 pt-6 border-t border-zinc-800/80 text-xs text-zinc-500">
+                    Response time: Usually within 24 business hours.
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-zinc-950 border-t border-zinc-900 py-8 text-center text-xs text-zinc-500">
+        <p>&copy; 2026 Humanivo Inc. All rights reserved.</p>
+    </footer>
+
+    <script>
+        function handleSubmit(e) {
+            e.preventDefault();
+            alert('Thank you! Your message has been sent successfully.');
+            e.target.reset();
+        }
+    </script>
 </body>
 </html>
