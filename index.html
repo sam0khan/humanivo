@@ -7,156 +7,495 @@
 <meta name="description" content="Free AI text humanizer. Paste AI-generated text, get natural, human-sounding writing back. No signup, no subscription.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   :root {
-    --paper: #F6F1E6;
-    --paper-dim: #EDE6D6;
-    --ink: #211E1A;
-    --ink-soft: #5B564C;
-    --rule: #D9D0BC;
-    --red: #A6342A;
-    --red-soft: #C75A45;
+    --bg: #0A0A13;
+    --bg-panel: #12121E;
+    --bg-panel-2: #161624;
+    --border: #26263A;
+    --border-soft: #1D1D2C;
+    --text: #F3F2FA;
+    --text-soft: #9895B3;
+    --text-dim: #656180;
+    --violet: #8B5CF6;
+    --indigo: #6366F1;
+    --violet-glow: rgba(139, 92, 246, 0.35);
   }
+
   * { box-sizing: border-box; }
   html { scroll-behavior: smooth; }
-  body { margin: 0; background: var(--paper); color: var(--ink); font-family: 'Inter', sans-serif; line-height: 1.5; }
-  h1, h2, .display { font-family: 'Fraunces', serif; font-weight: 500; letter-spacing: -0.01em; margin: 0; }
-  a { color: var(--red); }
-  .wrap { max-width: 880px; margin: 0 auto; padding: 0 24px; }
-  header.site { padding: 28px 0 18px; border-bottom: 1px solid var(--rule); }
-  header.site .wrap { display: flex; align-items: baseline; justify-content: space-between; }
-  .mark { font-family: 'Fraunces', serif; font-size: 20px; font-weight: 600; }
-  .mark span { color: var(--red); }
-  nav.site a { color: var(--ink-soft); text-decoration: none; font-size: 14px; margin-left: 22px; }
-  nav.site a:hover { color: var(--ink); }
-  .hero { padding: 56px 0 18px; }
-  .hero h1 { font-size: clamp(32px, 5vw, 46px); line-height: 1.08; max-width: 15ch; }
-  .hero p.sub { margin-top: 14px; max-width: 52ch; color: var(--ink-soft); font-size: 17px; }
-  .tool { margin-top: 34px; border: 1px solid var(--rule); background: #FFFDF8; }
-  .tool-grid { display: grid; grid-template-columns: 1fr 1fr; }
-  @media (max-width: 700px) { .tool-grid { grid-template-columns: 1fr; } .tool-grid > div:first-child { border-bottom: 1px solid var(--rule); } }
-  .pane { display: flex; flex-direction: column; min-height: 340px; }
-  .pane:first-child { border-right: 1px solid var(--rule); }
-  @media (max-width: 700px) { .pane:first-child { border-right: none; } }
-  .pane-label { display: flex; justify-content: space-between; align-items: center; padding: 14px 18px; font-size: 13px; color: var(--ink-soft); border-bottom: 1px solid var(--rule); }
-  .pane textarea, .pane .output { flex: 1; border: none; background: transparent; padding: 18px; font-family: 'Inter', sans-serif; font-size: 15.5px; line-height: 1.6; color: var(--ink); resize: none; outline: none; }
-  .pane .output { white-space: pre-wrap; overflow-y: auto; }
-  .pane .output.placeholder { color: #9C9585; }
-  .toolbar { display: flex; justify-content: space-between; align-items: center; padding: 14px 18px; border-top: 1px solid var(--rule); background: var(--paper-dim); }
-  .count { font-size: 13px; color: var(--ink-soft); }
-  button.primary { background: var(--red); color: #FFF8EE; border: none; padding: 11px 22px; font-family: 'Inter', sans-serif; font-size: 14.5px; font-weight: 600; cursor: pointer; transition: background 0.15s ease; }
-  button.primary:hover { background: var(--red-soft); }
-  button.primary:disabled { background: #B9B2A0; cursor: not-allowed; }
-  button.ghost { background: none; border: 1px solid var(--rule); padding: 8px 14px; font-family: 'Inter', sans-serif; font-size: 13px; color: var(--ink-soft); cursor: pointer; }
-  button.ghost:hover { border-color: var(--ink-soft); color: var(--ink); }
-  .error-msg { padding: 12px 18px; font-size: 13.5px; color: var(--red); display: none; }
-  section.about { padding: 60px 0 20px; border-top: 1px solid var(--rule); margin-top: 56px; }
-  section.about h2 { font-size: 26px; margin-bottom: 14px; }
-  section.about p { max-width: 62ch; color: var(--ink-soft); font-size: 15.5px; }
-  section.faq { padding: 20px 0 60px; }
-  .faq-item { border-top: 1px solid var(--rule); padding: 20px 0; }
-  .faq-item:last-child { border-bottom: 1px solid var(--rule); }
-  .faq-item h3 { font-family: 'Inter', sans-serif; font-size: 16px; font-weight: 600; margin: 0 0 8px; }
-  .faq-item p { margin: 0; color: var(--ink-soft); font-size: 15px; max-width: 60ch; }
-  footer { border-top: 1px solid var(--rule); padding: 26px 0 40px; }
-  footer .wrap { display: flex; justify-content: space-between; font-size: 13px; color: var(--ink-soft); }
-  footer a { color: var(--ink-soft); text-decoration: none; }
-  footer a:hover { color: var(--red); }
+
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Inter', sans-serif;
+    line-height: 1.55;
+  }
+
+  h1, h2, .display {
+    font-family: 'Sora', sans-serif;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin: 0;
+  }
+
+  a { color: var(--text); text-decoration: none; }
+
+  .wrap {
+    max-width: 920px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  .glow-field {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .glow-field::before {
+    content: '';
+    position: absolute;
+    top: -220px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 900px;
+    height: 500px;
+    background: radial-gradient(ellipse at center, var(--violet-glow) 0%, rgba(99,102,241,0.08) 45%, transparent 70%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  header.site {
+    padding: 24px 0;
+    position: relative;
+    z-index: 2;
+  }
+
+  header.site .wrap {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .mark {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    font-family: 'Sora', sans-serif;
+    font-size: 19px;
+    font-weight: 700;
+  }
+
+  .mark .dot {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--violet), var(--indigo));
+    box-shadow: 0 0 12px var(--violet-glow);
+  }
+
+  nav.site {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+  }
+
+  nav.site a {
+    color: var(--text-soft);
+    font-size: 14.5px;
+    transition: color 0.15s ease;
+  }
+
+  nav.site a:hover { color: var(--text); }
+
+  .hero {
+    padding: 46px 0 8px;
+    text-align: center;
+    position: relative;
+    z-index: 2;
+  }
+
+  .hero h1 {
+    font-size: clamp(34px, 6vw, 52px);
+    line-height: 1.1;
+    max-width: 16ch;
+    margin: 0 auto;
+  }
+
+  .hero h1 .accent {
+    background: linear-gradient(135deg, #A78BFA, var(--violet), var(--indigo));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .hero p.sub {
+    margin: 18px auto 0;
+    max-width: 46ch;
+    color: var(--text-soft);
+    font-size: 17px;
+  }
+
+  .trust-row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-top: 22px;
+    font-size: 13.5px;
+    color: var(--text-dim);
+  }
+
+  .trust-row .sep { color: var(--border); }
+
+  .trust-row .dot-ok {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #34D399;
+    display: inline-block;
+    margin-right: 6px;
+  }
+
+  .model-row {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-top: 30px;
+  }
+
+  .model-chip {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    background: var(--bg-panel);
+    border: 1px solid var(--border-soft);
+    padding: 7px 14px;
+    border-radius: 100px;
+    font-size: 13px;
+    color: var(--text-soft);
+  }
+
+  .tool {
+    margin: 40px 0 0;
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    background: var(--bg-panel);
+    box-shadow: 0 0 60px rgba(139,92,246,0.06);
+    position: relative;
+    z-index: 2;
+    overflow: hidden;
+  }
+
+  .tool-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  @media (max-width: 700px) {
+    .tool-grid { grid-template-columns: 1fr; }
+    .tool-grid > div:first-child { border-bottom: 1px solid var(--border); }
+  }
+
+  .pane {
+    display: flex;
+    flex-direction: column;
+    min-height: 320px;
+  }
+
+  .pane:first-child { border-right: 1px solid var(--border); }
+
+  @media (max-width: 700px) {
+    .pane:first-child { border-right: none; }
+  }
+
+  .pane-label {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 14px 18px;
+    font-size: 13px;
+    color: var(--text-dim);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .pane textarea, .pane .output {
+    flex: 1;
+    border: none;
+    background: transparent;
+    padding: 18px;
+    font-family: 'Inter', sans-serif;
+    font-size: 15.5px;
+    line-height: 1.65;
+    color: var(--text);
+    resize: none;
+    outline: none;
+  }
+
+  .pane textarea::placeholder { color: var(--text-dim); }
+
+  .pane .output {
+    white-space: pre-wrap;
+    overflow-y: auto;
+  }
+
+  .pane .output.placeholder { color: var(--text-dim); }
+
+  .toolbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 14px 18px;
+    border-top: 1px solid var(--border);
+    background: var(--bg-panel-2);
+  }
+
+  .count { font-size: 13px; color: var(--text-dim); }
+
+  button.primary {
+    background: linear-gradient(135deg, var(--violet), var(--indigo));
+    color: #fff;
+    border: none;
+    padding: 11px 24px;
+    border-radius: 100px;
+    font-family: 'Inter', sans-serif;
+    font-size: 14.5px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: box-shadow 0.2s ease, transform 0.15s ease, opacity 0.15s ease;
+  }
+
+  button.primary:hover:not(:disabled) {
+    box-shadow: 0 4px 24px var(--violet-glow);
+    transform: translateY(-1px);
+  }
+
+  button.primary:disabled { opacity: 0.5; cursor: not-allowed; }
+
+  button.ghost {
+    background: transparent;
+    border: 1px solid var(--border);
+    padding: 7px 14px;
+    border-radius: 100px;
+    font-family: 'Inter', sans-serif;
+    font-size: 12.5px;
+    color: var(--text-soft);
+    cursor: pointer;
+  }
+
+  button.ghost:hover { border-color: var(--violet); color: var(--text); }
+
+  .error-msg {
+    padding: 12px 18px;
+    font-size: 13.5px;
+    color: #F87171;
+    display: none;
+  }
+
+  section.about {
+    padding: 70px 0 20px;
+    position: relative;
+    z-index: 2;
+  }
+
+  section.about h2 {
+    font-size: 27px;
+    margin-bottom: 14px;
+  }
+
+  section.about p {
+    max-width: 62ch;
+    color: var(--text-soft);
+    font-size: 15.5px;
+  }
+
+  section.faq { padding: 20px 0 70px; position: relative; z-index: 2; }
+
+  .faq-item {
+    border-top: 1px solid var(--border-soft);
+    padding: 22px 0;
+  }
+
+  .faq-item:last-child { border-bottom: 1px solid var(--border-soft); }
+
+  .faq-item h3 {
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    margin: 0 0 8px;
+  }
+
+  .faq-item p {
+    margin: 0;
+    color: var(--text-soft);
+    font-size: 15px;
+    max-width: 60ch;
+  }
+
+  .faq-item a { color: #A78BFA; }
+
+  footer {
+    border-top: 1px solid var(--border-soft);
+    padding: 26px 0 40px;
+    position: relative;
+    z-index: 2;
+  }
+
+  footer .wrap {
+    display: flex;
+    justify-content: space-between;
+    font-size: 13px;
+    color: var(--text-dim);
+  }
+
+  footer a { color: var(--text-dim); }
+  footer a:hover { color: var(--text); }
 </style>
 </head>
 <body>
-<header class="site">
+
+<div class="glow-field">
+  <header class="site">
+    <div class="wrap">
+      <div class="mark"><span class="dot"></span>humanize</div>
+      <nav class="site">
+        <a href="#about">About</a>
+        <a href="#faq">FAQ</a>
+        <a href="/privacy.html">Privacy</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="hero wrap">
+    <h1>Turn stiff AI writing into text that <span class="accent">sounds like you</span>.</h1>
+    <p class="sub">Paste anything written by ChatGPT, Claude, or any AI. Get back natural, varied, human-sounding writing.</p>
+    <div class="trust-row">
+      <span><span class="dot-ok"></span>Free, no login required</span>
+      <span class="sep">·</span>
+      <span>Unlimited rewrites</span>
+      <span class="sep">·</span>
+      <span>Nothing stored</span>
+    </div>
+    <div class="model-row">
+      <div class="model-chip">Works with ChatGPT</div>
+      <div class="model-chip">Claude</div>
+      <div class="model-chip">Gemini</div>
+      <div class="model-chip">DeepSeek</div>
+    </div>
+  </div>
+
   <div class="wrap">
-    <div class="mark">humanize<span>.</span></div>
-    <nav class="site">
-      <a href="#about">About</a>
-      <a href="#faq">FAQ</a>
-      <a href="/privacy.html">Privacy</a>
-    </nav>
-  </div>
-</header>
-<div class="hero wrap">
-  <h1>Turn stiff AI writing into text that sounds like you.</h1>
-  <p class="sub">Paste anything written by ChatGPT, Claude, or any AI. Get back natural, varied, human-sounding writing — free, no account, no limits.</p>
-</div>
-<div class="wrap">
-  <div class="tool">
-    <div class="tool-grid">
-      <div class="pane">
-        <div class="pane-label"><span>Original</span></div>
-        <textarea id="input" placeholder="Paste your AI-generated text here…"></textarea>
-      </div>
-      <div class="pane">
-        <div class="pane-label">
-          <span>Humanized</span>
-          <button class="ghost" id="copyBtn" style="display:none;">Copy</button>
+    <div class="tool">
+      <div class="tool-grid">
+        <div class="pane">
+          <div class="pane-label"><span>Original</span></div>
+          <textarea id="input" placeholder="Paste your AI-generated text here…"></textarea>
         </div>
-        <div class="output placeholder" id="output">Your rewritten text will appear here.</div>
+        <div class="pane">
+          <div class="pane-label">
+            <span>Humanized</span>
+            <button class="ghost" id="copyBtn" style="display:none;">Copy</button>
+          </div>
+          <div class="output placeholder" id="output">Your rewritten text will appear here.</div>
+        </div>
       </div>
-    </div>
-    <div class="error-msg" id="errorMsg"></div>
-    <div class="toolbar">
-      <span class="count" id="charCount">0 characters</span>
-      <button class="primary" id="humanizeBtn">Humanize text</button>
+      <div class="error-msg" id="errorMsg"></div>
+      <div class="toolbar">
+        <span class="count" id="charCount">0 characters</span>
+        <button class="primary" id="humanizeBtn">Humanize text</button>
+      </div>
     </div>
   </div>
 </div>
+
 <section class="about wrap" id="about">
   <h2>Why AI writing sounds like AI</h2>
   <p>Language models default to predictable rhythm: even sentence lengths, the same handful of transition words, and a tone that's polished but flat. That pattern is exactly what AI detectors and readers alike learn to spot. Humanize rewrites your text with varied sentence structure, natural phrasing, and the small imperfections real writing has — while keeping your original meaning intact.</p>
   <p>It's built for students checking their own drafts, writers cleaning up AI-assisted first passes, and anyone who wants their writing to read like a person wrote it — because it did, with some help.</p>
 </section>
+
 <section class="faq wrap" id="faq">
-  <h2 style="font-size:26px; margin-bottom: 6px;">Common questions</h2>
+  <h2 style="font-size:27px; margin-bottom: 6px;">Common questions</h2>
+
   <div class="faq-item">
     <h3>Is this actually free?</h3>
     <p>Yes. No signup, no subscription, no word limits behind a paywall. Paste text, get results.</p>
   </div>
+
   <div class="faq-item">
     <h3>Does this bypass AI detectors?</h3>
     <p>It rewrites text to sound naturally human, which often reduces AI-detection scores as a side effect. It's not designed or guaranteed to defeat any specific detector, and we'd encourage using AI-assisted writing responsibly and disclosing it where required.</p>
   </div>
+
   <div class="faq-item">
     <h3>Will this change the meaning of my text?</h3>
     <p>No — it rewrites phrasing, sentence rhythm, and word choice while preserving your original meaning and key facts.</p>
   </div>
+
   <div class="faq-item">
     <h3>Is my text stored anywhere?</h3>
     <p>No. Text is processed to generate your result and is not saved or logged. See our <a href="/privacy.html">privacy policy</a> for details.</p>
   </div>
+
   <div class="faq-item">
     <h3>Is there a character limit?</h3>
     <p>Very long inputs may take longer to process, but there's no hard paywall limit.</p>
   </div>
 </section>
+
 <footer>
   <div class="wrap">
     <span>© <span id="year"></span> Humanize</span>
     <a href="/privacy.html">Privacy Policy</a>
   </div>
 </footer>
+
 <script>
   document.getElementById('year').textContent = new Date().getFullYear();
+
   const input = document.getElementById('input');
   const output = document.getElementById('output');
   const charCount = document.getElementById('charCount');
   const humanizeBtn = document.getElementById('humanizeBtn');
   const copyBtn = document.getElementById('copyBtn');
   const errorMsg = document.getElementById('errorMsg');
-  input.addEventListener('input', () => { charCount.textContent = input.value.length + ' characters'; });
+
+  input.addEventListener('input', () => {
+    charCount.textContent = input.value.length + ' characters';
+  });
+
   humanizeBtn.addEventListener('click', async () => {
     const text = input.value.trim();
     errorMsg.style.display = 'none';
-    if (!text) { errorMsg.textContent = 'Paste some text first.'; errorMsg.style.display = 'block'; return; }
+
+    if (!text) {
+      errorMsg.textContent = 'Paste some text first.';
+      errorMsg.style.display = 'block';
+      return;
+    }
+
     humanizeBtn.disabled = true;
     humanizeBtn.textContent = 'Humanizing…';
     output.textContent = 'Working on it…';
     output.classList.add('placeholder');
     copyBtn.style.display = 'none';
+
     try {
-      const res = await fetch('/api/humanize', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ text }) });
-      if (!res.ok) { const data = await res.json().catch(() => ({})); throw new Error(data.error || 'Something went wrong. Try again.'); }
+      const res = await fetch('/api/humanize', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ text })
+      });
+
+      if (!res.ok) {
+        const data = await res.json().catch(() => ({}));
+        throw new Error(data.error || 'Something went wrong. Try again.');
+      }
+
       const data = await res.json();
       output.textContent = data.result;
       output.classList.remove('placeholder');
@@ -171,11 +510,13 @@
       humanizeBtn.textContent = 'Humanize text';
     }
   });
+
   copyBtn.addEventListener('click', () => {
     navigator.clipboard.writeText(output.textContent);
     copyBtn.textContent = 'Copied';
     setTimeout(() => { copyBtn.textContent = 'Copy'; }, 1500);
   });
 </script>
+
 </body>
 </html>
