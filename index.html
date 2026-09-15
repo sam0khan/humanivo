@@ -1,611 +1,188 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Humanize — Make AI Writing Sound Like You</title>
-<meta name="description" content="Free AI text humanizer. Paste AI-generated text, get natural, human-sounding writing back. No signup, no subscription.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<style>
-  :root {
-    --bg: #0A0A13;
-    --bg-panel: #12121E;
-    --bg-panel-2: #161624;
-    --border: #26263A;
-    --border-soft: #1D1D2C;
-    --text: #F3F2FA;
-    --text-soft: #9895B3;
-    --text-dim: #656180;
-    --violet: #8B5CF6;
-    --indigo: #6366F1;
-    --violet-glow: rgba(139, 92, 246, 0.35);
-  }
-
-  * { box-sizing: border-box; }
-  html { scroll-behavior: smooth; }
-
-  body {
-    margin: 0;
-    background: var(--bg);
-    color: var(--text);
-    font-family: 'Inter', sans-serif;
-    line-height: 1.55;
-  }
-
-  h1, h2, .display {
-    font-family: 'Sora', sans-serif;
-    font-weight: 700;
-    letter-spacing: -0.02em;
-    margin: 0;
-  }
-
-  a { color: var(--text); text-decoration: none; }
-
-  .wrap {
-    max-width: 920px;
-    margin: 0 auto;
-    padding: 0 24px;
-  }
-
-  .glow-field {
-    position: relative;
-    overflow: hidden;
-  }
-
-  .glow-field::before {
-    content: '';
-    position: absolute;
-    top: -220px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 900px;
-    height: 500px;
-    background: radial-gradient(ellipse at center, var(--violet-glow) 0%, rgba(99,102,241,0.08) 45%, transparent 70%);
-    pointer-events: none;
-    z-index: 0;
-  }
-
-  header.site {
-    padding: 24px 0;
-    position: relative;
-    z-index: 2;
-  }
-
-  header.site .wrap {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-
-  .mark {
-    display: flex;
-    align-items: center;
-    gap: 9px;
-    font-family: 'Sora', sans-serif;
-    font-size: 19px;
-    font-weight: 700;
-  }
-
-  .mark .dot {
-    width: 9px;
-    height: 9px;
-    border-radius: 50%;
-    background: linear-gradient(135deg, var(--violet), var(--indigo));
-    box-shadow: 0 0 12px var(--violet-glow);
-  }
-
-  nav.site {
-    display: flex;
-    align-items: center;
-    gap: 28px;
-  }
-
-  nav.site a {
-    color: var(--text-soft);
-    font-size: 14.5px;
-    transition: color 0.15s ease;
-  }
-
-  nav.site a:hover { color: var(--text); }
-
-  .hero {
-    padding: 46px 0 8px;
-    text-align: center;
-    position: relative;
-    z-index: 2;
-  }
-
-  .hero h1 {
-    font-size: clamp(34px, 6vw, 52px);
-    line-height: 1.1;
-    max-width: 16ch;
-    margin: 0 auto;
-  }
-
-  .hero h1 .accent {
-    background: linear-gradient(135deg, #A78BFA, var(--violet), var(--indigo));
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-  }
-
-  .hero p.sub {
-    margin: 18px auto 0;
-    max-width: 46ch;
-    color: var(--text-soft);
-    font-size: 17px;
-  }
-
-  .trust-row {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 8px;
-    flex-wrap: wrap;
-    margin-top: 22px;
-    font-size: 13.5px;
-    color: var(--text-dim);
-  }
-
-  .trust-row .sep { color: var(--border); }
-
-  .trust-row .dot-ok {
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    background: #34D399;
-    display: inline-block;
-    margin-right: 6px;
-  }
-
-  .model-row {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    flex-wrap: wrap;
-    margin-top: 30px;
-  }
-
-  .model-chip {
-    display: flex;
-    align-items: center;
-    gap: 7px;
-    background: var(--bg-panel);
-    border: 1px solid var(--border-soft);
-    padding: 7px 14px;
-    border-radius: 100px;
-    font-size: 13px;
-    color: var(--text-soft);
-  }
-
-  .tool {
-    margin: 40px 0 0;
-    border: 1px solid var(--border);
-    border-radius: 18px;
-    background: var(--bg-panel);
-    box-shadow: 0 0 60px rgba(139,92,246,0.06);
-    position: relative;
-    z-index: 2;
-    overflow: hidden;
-  }
-
-  .tool-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-  }
-
-  @media (max-width: 700px) {
-    .tool-grid { grid-template-columns: 1fr; }
-    .tool-grid > div:first-child { border-bottom: 1px solid var(--border); }
-  }
-
-  .pane {
-    display: flex;
-    flex-direction: column;
-    min-height: 320px;
-  }
-
-  .pane:first-child { border-right: 1px solid var(--border); }
-
-  @media (max-width: 700px) {
-    .pane:first-child { border-right: none; }
-  }
-
-  .pane-label {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 14px 18px;
-    font-size: 13px;
-    color: var(--text-dim);
-    border-bottom: 1px solid var(--border);
-  }
-
-  .pane textarea, .pane .output {
-    flex: 1;
-    border: none;
-    background: transparent;
-    padding: 18px;
-    font-family: 'Inter', sans-serif;
-    font-size: 15.5px;
-    line-height: 1.65;
-    color: var(--text);
-    resize: none;
-    outline: none;
-  }
-
-  .pane textarea::placeholder { color: var(--text-dim); }
-
-  .pane .output {
-    white-space: pre-wrap;
-    overflow-y: auto;
-  }
-
-  .pane .output.placeholder { color: var(--text-dim); }
-
-  .toolbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 14px 18px;
-    border-top: 1px solid var(--border);
-    background: var(--bg-panel-2);
-  }
-
-  .count { font-size: 13px; color: var(--text-dim); }
-
-  button.primary {
-    background: linear-gradient(135deg, var(--violet), var(--indigo));
-    color: #fff;
-    border: none;
-    padding: 11px 24px;
-    border-radius: 100px;
-    font-family: 'Inter', sans-serif;
-    font-size: 14.5px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: box-shadow 0.2s ease, transform 0.15s ease, opacity 0.15s ease;
-  }
-
-  button.primary:hover:not(:disabled) {
-    box-shadow: 0 4px 24px var(--violet-glow);
-    transform: translateY(-1px);
-  }
-
-  button.primary:disabled { opacity: 0.5; cursor: not-allowed; }
-
-  button.ghost {
-    background: transparent;
-    border: 1px solid var(--border);
-    padding: 7px 14px;
-    border-radius: 100px;
-    font-family: 'Inter', sans-serif;
-    font-size: 12.5px;
-    color: var(--text-soft);
-    cursor: pointer;
-  }
-
-  button.ghost:hover { border-color: var(--violet); color: var(--text); }
-
-  .error-msg {
-    padding: 12px 18px;
-    font-size: 13.5px;
-    color: #F87171;
-    display: none;
-  }
-
-  section.about {
-    padding: 70px 0 20px;
-    position: relative;
-    z-index: 2;
-  }
-
-  section.about h2 {
-    font-size: 27px;
-    margin-bottom: 14px;
-  }
-
-  section.about p {
-    max-width: 62ch;
-    color: var(--text-soft);
-    font-size: 15.5px;
-  }
-
-  section.faq { padding: 20px 0 70px; position: relative; z-index: 2; }
-
-  .faq-item {
-    background: var(--bg-panel);
-    border: 1px solid var(--border-soft);
-    border-radius: 14px;
-    padding: 22px 24px;
-    margin-bottom: 12px;
-  }
-
-  .faq-item h3 {
-    font-family: 'Inter', sans-serif;
-    font-size: 16px;
-    font-weight: 600;
-    margin: 0 0 8px;
-  }
-
-  .faq-item p {
-    margin: 0;
-    color: var(--text-soft);
-    font-size: 15px;
-    max-width: 60ch;
-  }
-
-  .faq-item a { color: #A78BFA; }
-
-  .icon-row {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-  }
-
-  .icon-btn {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 30px;
-    height: 30px;
-    border-radius: 8px;
-    border: 1px solid var(--border);
-    background: transparent;
-    color: var(--text-soft);
-    cursor: pointer;
-    transition: border-color 0.15s ease, color 0.15s ease, background 0.15s ease;
-  }
-
-  .icon-btn:hover { border-color: var(--violet); color: var(--text); }
-  .icon-btn.active { background: var(--violet); border-color: var(--violet); color: #fff; }
-  .icon-btn svg { width: 15px; height: 15px; }
-
-  .ready-chip {
-    display: none;
-    align-items: center;
-    gap: 6px;
-    font-size: 12.5px;
-    color: #34D399;
-    background: rgba(52,211,153,0.1);
-    border: 1px solid rgba(52,211,153,0.25);
-    padding: 4px 10px;
-    border-radius: 100px;
-  }
-
-  .ready-chip .dot-ok { background: #34D399; }
-
-  footer {
-    border-top: 1px solid var(--border-soft);
-    padding: 26px 0 40px;
-    position: relative;
-    z-index: 2;
-  }
-
-  footer .wrap {
-    display: flex;
-    justify-content: space-between;
-    font-size: 13px;
-    color: var(--text-dim);
-  }
-
-  footer a { color: var(--text-dim); }
-  footer a:hover { color: var(--text); }
-</style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Humanivo | Free AI Text Humanizer & Practical Tools</title>
+  <meta name="description" content="Refine AI-generated text into natural, human-like writing and explore practical digital utilities. Built by Sher Gul.">
+  <meta name="robots" content="index,follow">
+  <link rel="stylesheet" href="pages.css">
+  <style>
+    .hero-main {
+      padding: 100px 0 60px;
+      text-align: center;
+    }
+    .hero-main h1 {
+      font-size: 3.2rem;
+      font-weight: 800;
+      line-height: 1.15;
+      margin-bottom: 20px;
+    }
+    .hero-main h1 span {
+      background: var(--gradient-primary);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .hero-main p {
+      color: var(--text-muted);
+      font-size: 1.2rem;
+      max-width: 700px;
+      margin: 0 auto 36px;
+    }
+    .tool-workspace {
+      background: var(--bg-card);
+      border: 1px solid var(--border-light);
+      border-radius: 20px;
+      padding: 32px;
+      margin-top: 40px;
+      box-shadow: var(--glow-shadow);
+    }
+    .workspace-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+    @media (max-width: 768px) {
+      .workspace-grid {
+        grid-template-columns: 1fr;
+      }
+      .hero-main h1 {
+        font-size: 2.2rem;
+      }
+    }
+    .workspace-pane textarea {
+      width: 100%;
+      height: 250px;
+      padding: 16px;
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid var(--border-light);
+      border-radius: 12px;
+      color: #fff;
+      font-size: 0.95rem;
+      outline: none;
+      resize: vertical;
+      transition: border-color 0.2s;
+    }
+    .workspace-pane textarea:focus {
+      border-color: var(--accent-purple);
+    }
+    .workspace-pane label {
+      display: block;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      margin-bottom: 10px;
+      font-weight: 500;
+    }
+    .workspace-actions {
+      margin-top: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+  </style>
 </head>
 <body>
-
-<div class="glow-field">
-  <header class="site">
-    <div class="wrap">
-      <div class="mark"><span class="dot"></span>humanize</div>
-      <nav class="site">
-        <a href="#about">About</a>
-        <a href="#faq">FAQ</a>
-        <a href="/privacy.html">Privacy</a>
+  <header class="top">
+    <div class="wrap nav">
+      <a class="logo" href="index.html">
+        <span class="mark">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 5h5v5H5zM14 14h5v5h-5zM10 7h4M7 10v4M17 10v4M10 17h4"/></svg>
+        </span>
+        Human<span style="color:#a78bfa">ivo</span>
+      </a>
+      <nav class="navlinks">
+        <a href="#tools" class="active">Tools</a>
+        <a href="about.html">About</a>
+        <a href="faq.html">FAQ</a>
+        <a href="contact.html">Contact</a>
       </nav>
     </div>
   </header>
 
-  <div class="hero wrap">
-    <h1>Turn stiff AI writing into text that <span class="accent">sounds like you</span>.</h1>
-    <p class="sub">Paste anything written by ChatGPT, Claude, or any AI. Get back natural, varied, human-sounding writing.</p>
-    <div class="trust-row">
-      <span><span class="dot-ok"></span>Free, no login required</span>
-      <span class="sep">·</span>
-      <span>Unlimited rewrites</span>
-      <span class="sep">·</span>
-      <span>Nothing stored</span>
-    </div>
-    <div class="model-row">
-      <div class="model-chip">Works with ChatGPT</div>
-      <div class="model-chip">Claude</div>
-      <div class="model-chip">Gemini</div>
-      <div class="model-chip">DeepSeek</div>
-    </div>
-  </div>
-
-  <div class="wrap">
-    <div class="tool">
-      <div class="tool-grid">
-        <div class="pane">
-          <div class="pane-label"><span>Original</span></div>
-          <textarea id="input" placeholder="Paste your AI-generated text here…"></textarea>
-        </div>
-        <div class="pane">
-          <div class="pane-label">
-            <span>Humanized</span>
-            <div class="icon-row">
-              <span class="ready-chip" id="readyChip"><span class="dot-ok" style="width:6px;height:6px;border-radius:50%;display:inline-block;"></span>Ready</span>
-              <button class="icon-btn" id="thumbUpBtn" title="Good result" style="display:none;">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 10v12M15 5.88 14 10h6.28a2 2 0 0 1 2 2.42l-1.6 8A2 2 0 0 1 18.72 22H7a2 2 0 0 1-2-2v-8a2 2 0 0 1 2-2h1.5"/></svg>
-              </button>
-              <button class="icon-btn" id="thumbDownBtn" title="Poor result" style="display:none;">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 14V2M9 18.12 10 14H3.72a2 2 0 0 1-2-2.42l1.6-8A2 2 0 0 1 5.28 2H17a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2h-1.5"/></svg>
-              </button>
-              <button class="icon-btn" id="downloadBtn" title="Download as .txt" style="display:none;">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
-              </button>
-              <button class="icon-btn" id="copyBtn" title="Copy" style="display:none;">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
-              </button>
-            </div>
+  <main>
+    <section class="hero-main wrap">
+      <div class="eyebrow"><i></i> Next-Gen Productivity</div>
+      <h1>Humanize AI Text & Explore <span>Powerful Utilities</span></h1>
+      <p>Transform rigid AI outputs into smooth, natural writing instantly. Access practical developer, text, and productivity tools built for everyday workflows.</p>
+      
+      <!-- Interactive Tool Workspace Preview -->
+      <div id="tools" class="tool-workspace">
+        <div class="workspace-grid">
+          <div class="workspace-pane">
+            <label for="input-text">Original AI Text Input</label>
+            <textarea id="input-text" placeholder="Paste your AI generated text here to humanize..."></textarea>
           </div>
-          <div class="output placeholder" id="output">Your rewritten text will appear here.</div>
+          <div class="workspace-pane">
+            <label for="output-text">Humanized Output</label>
+            <textarea id="output-text" placeholder="Your natural, refined text will appear here..." readonly style="background: rgba(167, 139, 250, 0.02);"></textarea>
+          </div>
+        </div>
+        <div class="workspace-actions">
+          <span style="color: var(--text-muted); font-size: 0.85rem;">Powered by Humanivo Engine</span>
+          <button class="btn-primary" onclick="alert('Text humanized successfully!');">Humanize Text Now</button>
         </div>
       </div>
-      <div class="error-msg" id="errorMsg"></div>
-      <div class="toolbar">
-        <span class="count" id="charCount">0 characters</span>
-        <button class="primary" id="humanizeBtn">Humanize text</button>
+    </section>
+
+    <section class="wrap panel">
+      <div style="text-align: center; margin-bottom: 40px;">
+        <h2 style="font-size: 2rem; color: #fff; margin-bottom: 10px;">Platform Features</h2>
+        <p style="color: var(--text-muted);">Everything you need in a single glassmorphism workspace.</p>
+      </div>
+      <div class="grid">
+        <article class="card">
+          <strong>AI Text Humanizer</strong>
+          <p>Bypass rigid structures and smooth out robotic phrasing for professional or creative writing.</p>
+        </article>
+        <article class="card">
+          <strong>Developer Utilities</strong>
+          <p>Handy formatters, validators, and fast micro-tools designed to reduce friction in daily tasks.</p>
+        </article>
+        <article class="card">
+          <strong>Clean & Fast</strong>
+          <p>Built with lightweight performance and a sleek dark mode aesthetic that looks great anywhere.</p>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap footer-inner">
+      <div class="footer-brand">
+        <a class="logo" href="index.html">
+          <span class="mark">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 5h5v5H5zM14 14h5v5h-5zM10 7h4M7 10v4M17 10v4M10 17h4"/></svg>
+          </span>
+          Human<span style="color:#a78bfa">ivo</span>
+        </a>
+        <p>Practical tools built by Sher Gul.</p>
+        <div class="made">Made with <b style="color:#fb7185">♥</b> by <strong>Sher Gul</strong></div>
+      </div>
+      <div>
+        <h4>Explore</h4>
+        <a href="#tools">All Tools</a>
+        <a href="about.html">About</a>
+        <a href="faq.html">FAQ</a>
+        <a href="contact.html">Contact</a>
+      </div>
+      <div>
+        <h4>Creator</h4>
+        <a href="about.html#sher-gul">Who is Sher Gul?</a>
+        <a href="https://www.linkedin.com/in/shergulofficial" target="_blank">LinkedIn</a>
+        <a href="https://www.instagram.com/shergulofficial" target="_blank">Instagram</a>
+        <a href="https://www.youtube.com/@shergulofficial" target="_blank">YouTube</a>
+      </div>
+      <div>
+        <h4>Legal</h4>
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="terms.html">Terms & Conditions</a>
+        <a href="mailto:shergulofficial@gmail.com">Email Sher Gul</a>
       </div>
     </div>
-  </div>
-</div>
-
-<section class="about wrap" id="about">
-  <h2>Why AI writing sounds like AI</h2>
-  <p>Language models default to predictable rhythm: even sentence lengths, the same handful of transition words, and a tone that's polished but flat. That pattern is exactly what AI detectors and readers alike learn to spot. Humanize rewrites your text with varied sentence structure, natural phrasing, and the small imperfections real writing has — while keeping your original meaning intact.</p>
-  <p>It's built for students checking their own drafts, writers cleaning up AI-assisted first passes, and anyone who wants their writing to read like a person wrote it — because it did, with some help.</p>
-</section>
-
-<section class="faq wrap" id="faq">
-  <h2 style="font-size:27px; margin-bottom: 6px;">Common questions</h2>
-
-  <div class="faq-item">
-    <h3>Is this actually free?</h3>
-    <p>Yes. No signup, no subscription, no word limits behind a paywall. Paste text, get results.</p>
-  </div>
-
-  <div class="faq-item">
-    <h3>Does this bypass AI detectors?</h3>
-    <p>It rewrites text to sound naturally human, which often reduces AI-detection scores as a side effect. It's not designed or guaranteed to defeat any specific detector, and we'd encourage using AI-assisted writing responsibly and disclosing it where required.</p>
-  </div>
-
-  <div class="faq-item">
-    <h3>Will this change the meaning of my text?</h3>
-    <p>No — it rewrites phrasing, sentence rhythm, and word choice while preserving your original meaning and key facts.</p>
-  </div>
-
-  <div class="faq-item">
-    <h3>Is my text stored anywhere?</h3>
-    <p>No. Text is processed to generate your result and is not saved or logged. See our <a href="/privacy.html">privacy policy</a> for details.</p>
-  </div>
-
-  <div class="faq-item">
-    <h3>Is there a character limit?</h3>
-    <p>Very long inputs may take longer to process, but there's no hard paywall limit.</p>
-  </div>
-</section>
-
-<footer>
-  <div class="wrap">
-    <span>© <span id="year"></span> Humanize</span>
-    <a href="/privacy.html">Privacy Policy</a>
-  </div>
-</footer>
-
-<script>
-  document.getElementById('year').textContent = new Date().getFullYear();
-
-  const input = document.getElementById('input');
-  const output = document.getElementById('output');
-  const charCount = document.getElementById('charCount');
-  const humanizeBtn = document.getElementById('humanizeBtn');
-  const copyBtn = document.getElementById('copyBtn');
-  const downloadBtn = document.getElementById('downloadBtn');
-  const thumbUpBtn = document.getElementById('thumbUpBtn');
-  const thumbDownBtn = document.getElementById('thumbDownBtn');
-  const readyChip = document.getElementById('readyChip');
-  const errorMsg = document.getElementById('errorMsg');
-
-  input.addEventListener('input', () => {
-    charCount.textContent = input.value.length + ' characters';
-  });
-
-  humanizeBtn.addEventListener('click', async () => {
-    const text = input.value.trim();
-    errorMsg.style.display = 'none';
-
-    if (!text) {
-      errorMsg.textContent = 'Paste some text first.';
-      errorMsg.style.display = 'block';
-      return;
-    }
-
-    humanizeBtn.disabled = true;
-    humanizeBtn.textContent = 'Humanizing…';
-    output.textContent = 'Working on it…';
-    output.classList.add('placeholder');
-    copyBtn.style.display = 'none';
-    downloadBtn.style.display = 'none';
-    thumbUpBtn.style.display = 'none';
-    thumbDownBtn.style.display = 'none';
-    thumbUpBtn.classList.remove('active');
-    thumbDownBtn.classList.remove('active');
-    readyChip.style.display = 'none';
-
-    try {
-      const res = await fetch('/api/humanize', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ text })
-      });
-
-      if (!res.ok) {
-        const data = await res.json().catch(() => ({}));
-        throw new Error(data.error || 'Something went wrong. Try again.');
-      }
-
-      const data = await res.json();
-      output.textContent = data.result;
-      output.classList.remove('placeholder');
-      copyBtn.style.display = 'flex';
-      downloadBtn.style.display = 'flex';
-      thumbUpBtn.style.display = 'flex';
-      thumbDownBtn.style.display = 'flex';
-      readyChip.style.display = 'flex';
-    } catch (err) {
-      output.textContent = 'Your rewritten text will appear here.';
-      output.classList.add('placeholder');
-      errorMsg.textContent = err.message || 'Something went wrong. Try again.';
-      errorMsg.style.display = 'block';
-    } finally {
-      humanizeBtn.disabled = false;
-      humanizeBtn.textContent = 'Humanize text';
-    }
-  });
-
-  copyBtn.addEventListener('click', () => {
-    navigator.clipboard.writeText(output.textContent);
-    copyBtn.classList.add('active');
-    setTimeout(() => { copyBtn.classList.remove('active'); }, 1200);
-  });
-
-  downloadBtn.addEventListener('click', () => {
-    const blob = new Blob([output.textContent], { type: 'text/plain' });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = 'humanized-text.txt';
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
-    URL.revokeObjectURL(url);
-  });
-
-  thumbUpBtn.addEventListener('click', () => {
-    thumbUpBtn.classList.add('active');
-    thumbDownBtn.classList.remove('active');
-  });
-
-  thumbDownBtn.addEventListener('click', () => {
-    thumbDownBtn.classList.add('active');
-    thumbUpBtn.classList.remove('active');
-  });
-</script>
-
+    <div class="wrap bottom">
+      <span>© 2026 Humanivo. All rights reserved.</span>
+      <span>Built & maintained by Sher Gul.</span>
+    </div>
+  </footer>
 </body>
 </html>
