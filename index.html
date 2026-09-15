@@ -1,188 +1,1019 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Humanivo | Free AI Text Humanizer & Practical Tools</title>
-  <meta name="description" content="Refine AI-generated text into natural, human-like writing and explore practical digital utilities. Built by Sher Gul.">
-  <meta name="robots" content="index,follow">
-  <link rel="stylesheet" href="pages.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Humanivo — Free AI, Text, PDF & Online Tools</title>
+
+  <meta name="description" content="Humanivo is a free collection of practical AI, text, PDF, developer, calculator and productivity tools built by Sher Gul.">
+  <meta name="keywords" content="Humanivo, free online tools, AI tools, AI text humanizer, PDF tools, text tools, developer tools, calculators, productivity tools">
+  <meta name="author" content="Sher Gul">
+  <meta name="robots" content="index, follow">
+
+  <meta property="og:title" content="Humanivo — Free AI & Online Tools">
+  <meta property="og:description" content="Simple, useful and free digital tools for everyday work.">
+  <meta property="og:type" content="website">
+
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='24' fill='%237c3aed'/%3E%3Cpath d='M28 30h18v18H28zm26 26h18v18H54zM46 38h8m-26 10v8m26-8v8M46 64h8' fill='none' stroke='white' stroke-width='7' stroke-linecap='round'/%3E%3C/svg%3E">
+
   <style>
-    .hero-main {
-      padding: 100px 0 60px;
-      text-align: center;
+    :root {
+      --bg: #07070a;
+      --bg-soft: #0b0b10;
+      --card: rgba(255,255,255,0.045);
+      --card-hover: rgba(255,255,255,0.075);
+      --border: rgba(255,255,255,0.09);
+      --border-hover: rgba(167,139,250,0.35);
+      --text: #f7f7fb;
+      --muted: #9b9ba8;
+      --muted-light: #c3c3ce;
+      --purple: #8b5cf6;
+      --purple-light: #a78bfa;
+      --blue: #6366f1;
+      --green: #34d399;
+      --max: 1180px;
     }
-    .hero-main h1 {
-      font-size: 3.2rem;
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background:
+        radial-gradient(circle at 50% -10%, rgba(124,58,237,0.16), transparent 38%),
+        radial-gradient(circle at 85% 35%, rgba(99,102,241,0.07), transparent 28%),
+        var(--bg);
+      color: var(--text);
+      font-family:
+        Inter,
+        ui-sans-serif,
+        system-ui,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button,
+    input {
+      font: inherit;
+    }
+
+    .container {
+      width: min(var(--max), calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    /* =========================
+       HEADER
+    ========================= */
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      background: rgba(7,7,10,0.78);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+    }
+
+    .nav {
+      height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 30px;
+    }
+
+    .logo {
+      display: inline-flex;
+      align-items: center;
+      gap: 11px;
+      font-size: 21px;
       font-weight: 800;
-      line-height: 1.15;
-      margin-bottom: 20px;
+      letter-spacing: -0.7px;
     }
-    .hero-main h1 span {
-      background: var(--gradient-primary);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-    .hero-main p {
-      color: var(--text-muted);
-      font-size: 1.2rem;
-      max-width: 700px;
-      margin: 0 auto 36px;
-    }
-    .tool-workspace {
-      background: var(--bg-card);
-      border: 1px solid var(--border-light);
-      border-radius: 20px;
-      padding: 32px;
-      margin-top: 40px;
-      box-shadow: var(--glow-shadow);
-    }
-    .workspace-grid {
+
+    .logo-mark {
+      width: 36px;
+      height: 36px;
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 24px;
+      place-items: center;
+      border-radius: 11px;
+      background: linear-gradient(135deg, #7c3aed, #6366f1);
+      box-shadow: 0 8px 28px rgba(124,58,237,0.28);
     }
-    @media (max-width: 768px) {
-      .workspace-grid {
-        grid-template-columns: 1fr;
-      }
-      .hero-main h1 {
-        font-size: 2.2rem;
-      }
+
+    .logo-mark svg {
+      width: 21px;
+      height: 21px;
     }
-    .workspace-pane textarea {
-      width: 100%;
-      height: 250px;
-      padding: 16px;
-      background: rgba(255, 255, 255, 0.02);
-      border: 1px solid var(--border-light);
-      border-radius: 12px;
-      color: #fff;
-      font-size: 0.95rem;
-      outline: none;
-      resize: vertical;
-      transition: border-color 0.2s;
+
+    .logo span {
+      color: var(--purple-light);
     }
-    .workspace-pane textarea:focus {
-      border-color: var(--accent-purple);
-    }
-    .workspace-pane label {
-      display: block;
-      color: var(--text-muted);
-      font-size: 0.9rem;
-      margin-bottom: 10px;
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 30px;
+      color: var(--muted);
+      font-size: 14px;
       font-weight: 500;
     }
-    .workspace-actions {
-      margin-top: 20px;
+
+    .nav-links a {
+      transition: color .2s ease;
+    }
+
+    .nav-links a:hover {
+      color: white;
+    }
+
+    .nav-button {
+      padding: 10px 17px;
+      border-radius: 10px;
+      border: 1px solid rgba(167,139,250,0.25);
+      background: rgba(139,92,246,0.12);
+      color: #ddd3ff !important;
+    }
+
+    /* =========================
+       HERO
+    ========================= */
+
+    .hero {
+      position: relative;
+      text-align: center;
+      padding: 105px 0 75px;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      width: 520px;
+      height: 520px;
+      left: 50%;
+      top: -260px;
+      transform: translateX(-50%);
+      background: rgba(124,58,237,0.10);
+      filter: blur(100px);
+      pointer-events: none;
+    }
+
+    .eyebrow {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      padding: 7px 13px;
+      margin-bottom: 24px;
+      border: 1px solid rgba(167,139,250,0.20);
+      border-radius: 999px;
+      background: rgba(139,92,246,0.07);
+      color: #c8b8ff;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: .2px;
+    }
+
+    .eyebrow-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #a78bfa;
+      box-shadow: 0 0 12px #8b5cf6;
+    }
+
+    .hero h1 {
+      position: relative;
+      max-width: 900px;
+      margin: 0 auto;
+      font-size: clamp(3rem, 7vw, 5.8rem);
+      line-height: .98;
+      letter-spacing: -4px;
+      font-weight: 850;
+    }
+
+    .gradient-text {
+      background: linear-gradient(
+        100deg,
+        #ffffff 15%,
+        #c4b5fd 48%,
+        #8b5cf6 80%
+      );
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .hero-description {
+      position: relative;
+      max-width: 670px;
+      margin: 28px auto 0;
+      color: var(--muted);
+      font-size: 17px;
+      line-height: 1.75;
+    }
+
+    .hero-actions {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      margin-top: 34px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      min-height: 48px;
+      padding: 0 21px;
+      border-radius: 12px;
+      font-size: 14px;
+      font-weight: 700;
+      transition:
+        transform .2s ease,
+        border-color .2s ease,
+        background .2s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+    }
+
+    .btn-primary {
+      background: white;
+      color: #09090b;
+      box-shadow: 0 10px 35px rgba(255,255,255,0.08);
+    }
+
+    .btn-secondary {
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,0.035);
+      color: #dddde6;
+    }
+
+    /* =========================
+       TOOL SEARCH
+    ========================= */
+
+    .search-box {
+      position: relative;
+      max-width: 680px;
+      margin: 52px auto 0;
+    }
+
+    .search-box input {
+      width: 100%;
+      height: 58px;
+      padding: 0 20px 0 52px;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      outline: none;
+      background: rgba(255,255,255,0.045);
+      color: white;
+      font-size: 14px;
+      backdrop-filter: blur(12px);
+      transition: border-color .2s ease, background .2s ease;
+    }
+
+    .search-box input:focus {
+      border-color: rgba(167,139,250,0.45);
+      background: rgba(255,255,255,0.06);
+    }
+
+    .search-box input::placeholder {
+      color: #747480;
+    }
+
+    .search-icon {
+      position: absolute;
+      left: 19px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #777783;
+    }
+
+    /* =========================
+       TOOLS
+    ========================= */
+
+    .tools-section {
+      padding: 60px 0 105px;
+    }
+
+    .section-heading {
       display: flex;
       justify-content: space-between;
+      align-items: end;
+      gap: 30px;
+      margin-bottom: 28px;
+    }
+
+    .section-heading h2 {
+      font-size: 28px;
+      letter-spacing: -1px;
+    }
+
+    .section-heading p {
+      color: var(--muted);
+      font-size: 14px;
+      max-width: 480px;
+      text-align: right;
+    }
+
+    .tool-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 15px;
+    }
+
+    .tool-card {
+      position: relative;
+      min-height: 205px;
+      padding: 25px;
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      background: linear-gradient(
+        145deg,
+        rgba(255,255,255,0.055),
+        rgba(255,255,255,0.018)
+      );
+      overflow: hidden;
+      transition:
+        transform .25s ease,
+        border-color .25s ease,
+        background .25s ease;
+    }
+
+    .tool-card::after {
+      content: "";
+      position: absolute;
+      width: 130px;
+      height: 130px;
+      right: -60px;
+      top: -60px;
+      border-radius: 50%;
+      background: rgba(139,92,246,0.08);
+      filter: blur(25px);
+    }
+
+    .tool-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--border-hover);
+      background: var(--card-hover);
+    }
+
+    .tool-icon {
+      width: 44px;
+      height: 44px;
+      display: grid;
+      place-items: center;
+      margin-bottom: 22px;
+      border-radius: 13px;
+      border: 1px solid rgba(255,255,255,0.08);
+      background: rgba(139,92,246,0.11);
+      color: #c4b5fd;
+    }
+
+    .tool-card h3 {
+      font-size: 17px;
+      margin-bottom: 7px;
+      letter-spacing: -.3px;
+    }
+
+    .tool-card p {
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.65;
+      max-width: 310px;
+    }
+
+    .tool-link {
+      position: absolute;
+      right: 23px;
+      bottom: 22px;
+      color: #aaa0c8;
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    /* =========================
+       FEATURE STRIP
+    ========================= */
+
+    .feature-section {
+      border-top: 1px solid rgba(255,255,255,0.06);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      background: rgba(255,255,255,0.018);
+    }
+
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .feature {
+      padding: 42px 35px;
+      border-right: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .feature:last-child {
+      border-right: none;
+    }
+
+    .feature-number {
+      color: #8069b5;
+      font-size: 12px;
+      font-weight: 700;
+      margin-bottom: 13px;
+    }
+
+    .feature h3 {
+      font-size: 17px;
+      margin-bottom: 7px;
+    }
+
+    .feature p {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    /* =========================
+       CREATOR
+    ========================= */
+
+    .creator {
+      padding: 105px 0;
+      text-align: center;
+    }
+
+    .creator-inner {
+      max-width: 760px;
+      margin: 0 auto;
+    }
+
+    .creator-label {
+      color: #a78bfa;
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      margin-bottom: 16px;
+    }
+
+    .creator h2 {
+      font-size: clamp(2.2rem, 5vw, 3.7rem);
+      line-height: 1.05;
+      letter-spacing: -2px;
+      margin-bottom: 20px;
+    }
+
+    .creator p {
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.8;
+    }
+
+    /* =========================
+       FOOTER
+    ========================= */
+
+    footer {
+      border-top: 1px solid rgba(255,255,255,0.07);
+      background: #050507;
+    }
+
+    .footer-main {
+      display: grid;
+      grid-template-columns: 1.6fr 1fr 1fr 1fr;
+      gap: 50px;
+      padding: 65px 0;
+    }
+
+    .footer-brand p {
+      max-width: 290px;
+      color: var(--muted);
+      font-size: 13px;
+      margin-top: 15px;
+      line-height: 1.7;
+    }
+
+    .footer-column h4 {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #777783;
+      margin-bottom: 18px;
+    }
+
+    .footer-column a {
+      display: block;
+      width: fit-content;
+      color: #aaaab5;
+      font-size: 13px;
+      margin-bottom: 11px;
+      transition: color .2s ease;
+    }
+
+    .footer-column a:hover {
+      color: white;
+    }
+
+    .footer-bottom {
+      min-height: 65px;
+      border-top: 1px solid rgba(255,255,255,0.06);
+      display: flex;
       align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      color: #666671;
+      font-size: 12px;
+    }
+
+    /* =========================
+       MOBILE
+    ========================= */
+
+    @media (max-width: 900px) {
+      .tool-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .footer-main {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 680px) {
+      .container {
+        width: min(100% - 28px, var(--max));
+      }
+
+      .nav {
+        height: 68px;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .hero {
+        padding: 78px 0 55px;
+      }
+
+      .hero h1 {
+        font-size: clamp(2.65rem, 14vw, 4rem);
+        letter-spacing: -2.5px;
+      }
+
+      .hero-description {
+        font-size: 15px;
+      }
+
+      .search-box {
+        margin-top: 38px;
+      }
+
+      .section-heading {
+        display: block;
+      }
+
+      .section-heading p {
+        text-align: left;
+        margin-top: 7px;
+      }
+
+      .tool-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .feature-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .feature {
+        border-right: none;
+        border-bottom: 1px solid rgba(255,255,255,0.06);
+      }
+
+      .feature:last-child {
+        border-bottom: none;
+      }
+
+      .footer-main {
+        grid-template-columns: 1fr 1fr;
+        gap: 35px 20px;
+      }
+
+      .footer-brand {
+        grid-column: 1 / -1;
+      }
+
+      .footer-bottom {
+        padding: 20px 0;
+        align-items: flex-start;
+        flex-direction: column;
+      }
     }
   </style>
 </head>
+
 <body>
-  <header class="top">
-    <div class="wrap nav">
-      <a class="logo" href="index.html">
-        <span class="mark">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 5h5v5H5zM14 14h5v5h-5zM10 7h4M7 10v4M17 10v4M10 17h4"/></svg>
-        </span>
-        Human<span style="color:#a78bfa">ivo</span>
+
+  <!-- =========================
+       HEADER
+  ========================== -->
+
+  <header>
+    <div class="container nav">
+
+      <a href="index.html" class="logo" aria-label="Humanivo Home">
+        <div class="logo-mark">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M5 5h5v5H5zM14 14h5v5h-5zM10 7h4M7 10v4M17 10v4M10 17h4"/>
+          </svg>
+        </div>
+        Human<span>ivo</span>
       </a>
-      <nav class="navlinks">
-        <a href="#tools" class="active">Tools</a>
+
+      <nav class="nav-links">
+        <a href="#tools">Tools</a>
         <a href="about.html">About</a>
         <a href="faq.html">FAQ</a>
         <a href="contact.html">Contact</a>
+        <a href="about.html#sher-gul" class="nav-button">Meet the Creator</a>
       </nav>
+
     </div>
   </header>
 
+
   <main>
-    <section class="hero-main wrap">
-      <div class="eyebrow"><i></i> Next-Gen Productivity</div>
-      <h1>Humanize AI Text & Explore <span>Powerful Utilities</span></h1>
-      <p>Transform rigid AI outputs into smooth, natural writing instantly. Access practical developer, text, and productivity tools built for everyday workflows.</p>
-      
-      <!-- Interactive Tool Workspace Preview -->
-      <div id="tools" class="tool-workspace">
-        <div class="workspace-grid">
-          <div class="workspace-pane">
-            <label for="input-text">Original AI Text Input</label>
-            <textarea id="input-text" placeholder="Paste your AI generated text here to humanize..."></textarea>
-          </div>
-          <div class="workspace-pane">
-            <label for="output-text">Humanized Output</label>
-            <textarea id="output-text" placeholder="Your natural, refined text will appear here..." readonly style="background: rgba(167, 139, 250, 0.02);"></textarea>
-          </div>
+
+    <!-- =========================
+         HERO
+    ========================== -->
+
+    <section class="hero">
+
+      <div class="container">
+
+        <div class="eyebrow">
+          <span class="eyebrow-dot"></span>
+          Free tools. Simple workflows. Built for humans.
         </div>
-        <div class="workspace-actions">
-          <span style="color: var(--text-muted); font-size: 0.85rem;">Powered by Humanivo Engine</span>
-          <button class="btn-primary" onclick="alert('Text humanized successfully!');">Humanize Text Now</button>
+
+        <h1>
+          Useful tools for
+          <span class="gradient-text">real work.</span>
+        </h1>
+
+        <p class="hero-description">
+          Humanivo brings practical AI, text, PDF, developer,
+          calculator and productivity tools together in one clean place.
+          No unnecessary complexity.
+        </p>
+
+        <div class="hero-actions">
+          <a href="#tools" class="btn btn-primary">
+            Explore Tools
+            <span>→</span>
+          </a>
+
+          <a href="about.html" class="btn btn-secondary">
+            Discover Humanivo
+          </a>
         </div>
+
+        <div class="search-box">
+          <span class="search-icon">
+            <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="11" cy="11" r="7"></circle>
+              <path d="m20 20-4-4"></path>
+            </svg>
+          </span>
+
+          <input
+            id="toolSearch"
+            type="search"
+            placeholder="Search tools..."
+            autocomplete="off"
+            aria-label="Search Humanivo tools"
+          >
+        </div>
+
       </div>
     </section>
 
-    <section class="wrap panel">
-      <div style="text-align: center; margin-bottom: 40px;">
-        <h2 style="font-size: 2rem; color: #fff; margin-bottom: 10px;">Platform Features</h2>
-        <p style="color: var(--text-muted);">Everything you need in a single glassmorphism workspace.</p>
-      </div>
-      <div class="grid">
-        <article class="card">
-          <strong>AI Text Humanizer</strong>
-          <p>Bypass rigid structures and smooth out robotic phrasing for professional or creative writing.</p>
-        </article>
-        <article class="card">
-          <strong>Developer Utilities</strong>
-          <p>Handy formatters, validators, and fast micro-tools designed to reduce friction in daily tasks.</p>
-        </article>
-        <article class="card">
-          <strong>Clean & Fast</strong>
-          <p>Built with lightweight performance and a sleek dark mode aesthetic that looks great anywhere.</p>
-        </article>
+
+    <!-- =========================
+         TOOLS
+    ========================== -->
+
+    <section class="tools-section" id="tools">
+
+      <div class="container">
+
+        <div class="section-heading">
+          <div>
+            <h2>Explore Humanivo</h2>
+          </div>
+
+          <p>
+            A growing collection of useful tools designed to
+            make everyday digital tasks faster and easier.
+          </p>
+        </div>
+
+
+        <div class="tool-grid" id="toolGrid">
+
+          <a href="ai-tools.html" class="tool-card" data-name="AI Tools AI text humanizer writing">
+            <div class="tool-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                <path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8L12 3z"/>
+                <path d="M19 16l.7 2.3L22 19l-2.3.7L19 22l-.7-2.3L16 19l2.3-.7L19 16z"/>
+              </svg>
+            </div>
+            <h3>AI Tools</h3>
+            <p>Practical AI utilities for writing, text transformation and everyday workflows.</p>
+            <span class="tool-link">Explore →</span>
+          </a>
+
+
+          <a href="pdf-tools.html" class="tool-card" data-name="PDF PDF tools merge split compress convert">
+            <div class="tool-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                <path d="M6 3h9l4 4v14H6z"/>
+                <path d="M14 3v5h5M9 14h6M9 18h4"/>
+              </svg>
+            </div>
+            <h3>PDF Tools</h3>
+            <p>Merge, split, compress, convert, edit and manage PDF documents.</p>
+            <span class="tool-link">Explore →</span>
+          </a>
+
+
+          <a href="text-tools.html" class="tool-card" data-name="Text tools word counter case converter">
+            <div class="tool-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                <path d="M5 5h14M9 5v14M7 19h10"/>
+              </svg>
+            </div>
+            <h3>Text Tools</h3>
+            <p>Count, format, transform and clean text with fast browser-based utilities.</p>
+            <span class="tool-link">Explore →</span>
+          </a>
+
+
+          <a href="developer-tools.html" class="tool-card" data-name="Developer tools JSON HTML CSS code formatter">
+            <div class="tool-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                <path d="m8 9-4 3 4 3M16 9l4 3-4 3M14 5l-4 14"/>
+              </svg>
+            </div>
+            <h3>Developer Tools</h3>
+            <p>Useful utilities for developers, including formatting, validation and data tools.</p>
+            <span class="tool-link">Explore →</span>
+          </a>
+
+
+          <a href="calculator.html" class="tool-card" data-name="Calculator calculators age percentage finance math">
+            <div class="tool-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                <rect x="5" y="3" width="14" height="18" rx="2"/>
+                <path d="M8 7h8M8 11h2M14 11h2M8 15h2M14 15h2M8 18h2M14 18h2"/>
+              </svg>
+            </div>
+            <h3>Calculators</h3>
+            <p>Everyday calculators for age, percentages, finance, dates and more.</p>
+            <span class="tool-link">Explore →</span>
+          </a>
+
+
+          <a href="qr-tools.html" class="tool-card" data-name="QR code generator scanner reader">
+            <div class="tool-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                <path d="M4 4h6v6H4zM14 4h6v6h-6zM4 14h6v6H4zM14 14h3M20 14v3M14 20h3M20 20h.01"/>
+              </svg>
+            </div>
+            <h3>QR Tools</h3>
+            <p>Create and scan QR codes for links, text, contact details and more.</p>
+            <span class="tool-link">Explore →</span>
+          </a>
+
+        </div>
+
+        <div id="noResults" style="
+          display:none;
+          text-align:center;
+          padding:45px 20px;
+          color:#777783;
+          font-size:14px;
+        ">
+          No matching tools found.
+        </div>
+
       </div>
     </section>
+
+
+    <!-- =========================
+         FEATURE STRIP
+    ========================== -->
+
+    <section class="feature-section">
+
+      <div class="container feature-grid">
+
+        <div class="feature">
+          <div class="feature-number">01</div>
+          <h3>Free to use</h3>
+          <p>Useful tools without unnecessary paywalls or complicated workflows.</p>
+        </div>
+
+        <div class="feature">
+          <div class="feature-number">02</div>
+          <h3>Built for simplicity</h3>
+          <p>Clean interfaces that help you get the task done instead of getting in the way.</p>
+        </div>
+
+        <div class="feature">
+          <div class="feature-number">03</div>
+          <h3>Always growing</h3>
+          <p>New tools and improvements are continuously being added to the platform.</p>
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================
+         CREATOR
+    ========================== -->
+
+    <section class="creator">
+
+      <div class="container creator-inner">
+
+        <div class="creator-label">Built by Sher Gul</div>
+
+        <h2>
+          One person.
+          <span class="gradient-text">A lot of ideas.</span>
+        </h2>
+
+        <p>
+          Humanivo is an independent digital project created by Sher Gul,
+          bringing together useful tools, experiments and practical ideas
+          designed to make the internet a little more useful.
+        </p>
+
+        <div class="hero-actions">
+          <a href="about.html#sher-gul" class="btn btn-secondary">
+            Who is Sher Gul? →
+          </a>
+        </div>
+
+      </div>
+
+    </section>
+
   </main>
 
-  <footer class="footer">
-    <div class="wrap footer-inner">
+
+  <!-- =========================
+       FOOTER
+  ========================== -->
+
+  <footer>
+
+    <div class="container footer-main">
+
       <div class="footer-brand">
-        <a class="logo" href="index.html">
-          <span class="mark">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 5h5v5H5zM14 14h5v5h-5zM10 7h4M7 10v4M17 10v4M10 17h4"/></svg>
-          </span>
-          Human<span style="color:#a78bfa">ivo</span>
+
+        <a href="index.html" class="logo">
+          <div class="logo-mark">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M5 5h5v5H5zM14 14h5v5h-5zM10 7h4M7 10v4M17 10v4M10 17h4"/>
+            </svg>
+          </div>
+          Human<span>ivo</span>
         </a>
-        <p>Practical tools built by Sher Gul.</p>
-        <div class="made">Made with <b style="color:#fb7185">♥</b> by <strong>Sher Gul</strong></div>
+
+        <p>
+          Free and practical digital tools for everyday work,
+          creativity and productivity.
+        </p>
+
       </div>
-      <div>
+
+
+      <div class="footer-column">
+
         <h4>Explore</h4>
+
         <a href="#tools">All Tools</a>
+        <a href="ai-tools.html">AI Tools</a>
+        <a href="pdf-tools.html">PDF Tools</a>
+        <a href="text-tools.html">Text Tools</a>
+
+      </div>
+
+
+      <div class="footer-column">
+
+        <h4>Humanivo</h4>
+
         <a href="about.html">About</a>
         <a href="faq.html">FAQ</a>
         <a href="contact.html">Contact</a>
+        <a href="about.html#sher-gul">Sher Gul</a>
+
       </div>
-      <div>
-        <h4>Creator</h4>
-        <a href="about.html#sher-gul">Who is Sher Gul?</a>
-        <a href="https://www.linkedin.com/in/shergulofficial" target="_blank">LinkedIn</a>
-        <a href="https://www.instagram.com/shergulofficial" target="_blank">Instagram</a>
-        <a href="https://www.youtube.com/@shergulofficial" target="_blank">YouTube</a>
-      </div>
-      <div>
+
+
+      <div class="footer-column">
+
         <h4>Legal</h4>
+
         <a href="privacy.html">Privacy Policy</a>
         <a href="terms.html">Terms & Conditions</a>
-        <a href="mailto:shergulofficial@gmail.com">Email Sher Gul</a>
+        <a href="mailto:shergulofficial@gmail.com">Email</a>
+
       </div>
+
     </div>
-    <div class="wrap bottom">
-      <span>© 2026 Humanivo. All rights reserved.</span>
-      <span>Built & maintained by Sher Gul.</span>
+
+
+    <div class="container footer-bottom">
+
+      <span>
+        © 2026 Humanivo. All rights reserved.
+      </span>
+
+      <span>
+        Built & maintained by Sher Gul.
+      </span>
+
     </div>
+
   </footer>
+
+
+  <!-- =========================
+       SEARCH SCRIPT
+  ========================== -->
+
+  <script>
+    const searchInput = document.getElementById("toolSearch");
+    const cards = document.querySelectorAll(".tool-card");
+    const noResults = document.getElementById("noResults");
+
+    searchInput.addEventListener("input", function () {
+
+      const query = this.value.toLowerCase().trim();
+      let visibleCards = 0;
+
+      cards.forEach(card => {
+
+        const name = card.dataset.name.toLowerCase();
+
+        if (name.includes(query)) {
+          card.style.display = "";
+          visibleCards++;
+        } else {
+          card.style.display = "none";
+        }
+
+      });
+
+      noResults.style.display =
+        visibleCards === 0 ? "block" : "none";
+
+    });
+  </script>
+
 </body>
 </html>
