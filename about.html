@@ -9,7 +9,7 @@
 
 <script src="https://cdn.tailwindcss.com"></script>
 <script>
-tailwind.config={darkMode:'class',theme:{extend:{colors:{brand:{50:'#f5f3ff',100:'#ede9fe',400:'#a78bfa',500:'#8b5cf6',600:'#7c3aed',700:'#6d28d9',900:'#4c1d95',950:'#2e1065'}},fontFamily:{sans:['Inter','sans-serif']}}}}
+tailwind.config={darkMode:'class',theme:{extend:{colors:{brand:{400:'#a78bfa',500:'#8b5cf6',600:'#7c3aed'}},fontFamily:{sans:['Inter','sans-serif']}}}}
 </script>
 
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -25,6 +25,7 @@ main,header,footer,section,div{max-width:100%}
 .glass-panel-hover:hover{border-color:rgba(139,92,246,.3);box-shadow:0 20px 40px -15px rgba(139,92,246,.15)}
 .glow-orb{position:absolute;width:600px;height:600px;background:radial-gradient(circle,rgba(124,58,237,.12) 0%,rgba(0,0,0,0) 70%);pointer-events:none;z-index:0}
 .glow-orb-secondary{position:absolute;width:500px;height:500px;background:radial-gradient(circle,rgba(59,130,246,.08) 0%,rgba(0,0,0,0) 70%);pointer-events:none;z-index:0}
+.profile-photo{object-fit:cover;object-position:center top}
 @media(max-width:640px){
   .mobile-header-btn{padding:.65rem .9rem!important;font-size:.78rem!important;white-space:nowrap}
   .mobile-logo{width:2.5rem!important;height:2.5rem!important;border-radius:1rem!important}
@@ -78,23 +79,25 @@ main,header,footer,section,div{max-width:100%}
     </p>
   </section>
 
-  <section class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pb-24 space-y-6">
+  <section class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pb-24 space-y-6">
 
     <div class="glass-panel rounded-3xl p-6 sm:p-8 border border-brand-500/20">
-      <div class="flex flex-col sm:flex-row sm:items-center gap-5 mb-6">
-        <div class="w-16 h-16 rounded-2xl bg-gradient-to-tr from-brand-600 via-violet-500 to-indigo-400 flex items-center justify-center shadow-lg shadow-brand-600/25 shrink-0">
-          <i class="fa-solid fa-user text-white text-2xl"></i>
+      <div class="grid grid-cols-1 md:grid-cols-[220px_1fr] gap-7 md:gap-9 items-center">
+        <div class="mx-auto md:mx-0">
+          <div class="relative h-44 w-44 sm:h-52 sm:w-52 rounded-[2rem] overflow-hidden border border-white/10 bg-zinc-900 shadow-2xl shadow-brand-600/20 ring-1 ring-brand-400/20">
+            <img src="sher-gul-profile.jpg" alt="Sher Gul, founder and creator of Humanivo" class="profile-photo h-full w-full">
+          </div>
         </div>
 
-        <div>
+        <div class="text-center md:text-left">
           <h2 class="text-2xl sm:text-3xl font-extrabold text-white">About Sher Gul</h2>
-          <p class="mt-1 text-xs uppercase tracking-widest text-brand-400 font-semibold">Founder / Creator of Humanivo</p>
+          <p class="mt-2 text-xs uppercase tracking-widest text-brand-400 font-semibold">Founder / Creator of Humanivo</p>
+
+          <p class="mt-5 text-zinc-400 text-sm sm:text-base leading-8">
+            Sher Gul is the creator behind Humanivo, a digital tool built to help writers, creators, students, and professionals make AI-generated text sound more natural, polished, and human-readable. His goal with Humanivo is to make writing improvement simple, fast, and accessible for anyone who wants cleaner, smoother, and more professional content.
+          </p>
         </div>
       </div>
-
-      <p class="text-zinc-400 text-sm sm:text-base leading-8">
-        Sher Gul is the creator behind Humanivo, a digital tool built to help writers, creators, students, and professionals make AI-generated text sound more natural, polished, and human-readable. His goal with Humanivo is to make writing improvement simple, fast, and accessible for anyone who wants cleaner, smoother, and more professional content.
-      </p>
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
