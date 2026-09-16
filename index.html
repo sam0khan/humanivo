@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
-  <title>Humanivo - Advanced AI Text Humanizer &amp; Bypass Engine</title>
+  <title>Humanivo - Advanced AI Text Humanizer &amp; Writing Refinement Tool</title>
 
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
@@ -83,22 +83,22 @@
     <section class="relative pt-16 pb-14 lg:pt-24 lg:pb-20 px-4 sm:px-6 lg:px-8 w-full max-w-7xl mx-auto text-center">
       <div class="mobile-hero-badge inline-flex items-center gap-2 px-4 py-2 rounded-full bg-brand-500/10 border border-brand-500/20 text-brand-400 text-xs font-semibold uppercase tracking-wider mb-6 backdrop-blur-md">
         <i class="fa-solid fa-wand-magic-sparkles animate-pulse"></i>
-        <span>Next-Gen Neural Language Reconstructor</span>
+        <span>Next-Gen Writing Refinement Tool</span>
       </div>
 
       <h1 class="mobile-hero-title text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight text-white max-w-5xl mx-auto leading-[1.08]">
         Transform Robotic AI Writing into
-        <span class="bg-gradient-to-r from-brand-400 via-violet-300 to-purple-400 bg-clip-text text-transparent">Indistinguishable Human Prose</span>
+        <span class="bg-gradient-to-r from-brand-400 via-violet-300 to-purple-400 bg-clip-text text-transparent">Natural Human-Readable Prose</span>
       </h1>
 
       <p class="mt-6 text-lg sm:text-xl text-zinc-400 max-w-2xl mx-auto leading-relaxed">
-        Bypass advanced classifiers like GPTZero, Turnitin, and Originality.ai instantly while preserving your exact meaning, style, and professional intent.
+        Improve AI-generated writing so it sounds more natural, clear, polished, and professional while preserving your original meaning and intent.
       </p>
 
       <div class="mt-10 flex flex-wrap items-center justify-center gap-5 sm:gap-10 text-xs text-zinc-400 font-medium">
-        <div class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-emerald-400"></i>99.8% Bypass Success Rate</div>
-        <div class="flex items-center gap-2"><i class="fa-solid fa-bolt text-amber-400"></i>Instant Processing Engine</div>
-        <div class="flex items-center gap-2"><i class="fa-solid fa-shield-halved text-brand-400"></i>Strict Zero-Log Privacy</div>
+        <div class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-emerald-400"></i>Natural Writing Refinement</div>
+        <div class="flex items-center gap-2"><i class="fa-solid fa-bolt text-amber-400"></i>Fast Text Processing</div>
+        <div class="flex items-center gap-2"><i class="fa-solid fa-shield-halved text-brand-400"></i>Privacy-Focused Workflow</div>
       </div>
     </section>
 
@@ -130,13 +130,13 @@
               </label>
               <span class="text-xs text-zinc-500">Paste ChatGPT, Claude, or LLM output</span>
             </div>
-            <textarea id="inputText" rows="12" oninput="updateWordCount()" placeholder="Paste your robotic AI-generated text here to begin transformation..." class="w-full min-h-[320px] bg-zinc-950/70 text-zinc-200 placeholder-zinc-600 rounded-2xl p-5 border border-zinc-800/80 focus:border-brand-500 focus:ring-1 focus:ring-brand-500 outline-none resize-y transition-all text-sm leading-relaxed shadow-inner"></textarea>
+            <textarea id="inputText" rows="12" oninput="updateWordCount()" placeholder="Paste your AI-generated text here to begin refinement..." class="w-full min-h-[320px] bg-zinc-950/70 text-zinc-200 placeholder-zinc-600 rounded-2xl p-5 border border-zinc-800/80 focus:border-brand-500 focus:ring-1 focus:ring-brand-500 outline-none resize-y transition-all text-sm leading-relaxed shadow-inner"></textarea>
           </div>
 
           <div class="flex flex-col space-y-3">
             <div class="flex flex-wrap justify-between items-center gap-2 px-1">
               <label for="outputText" class="text-sm font-semibold text-zinc-200 flex items-center gap-2">
-                <i class="fa-solid fa-wand-magic-sparkles text-violet-400"></i>Humanized Result
+                <i class="fa-solid fa-wand-magic-sparkles text-violet-400"></i>Refined Result
               </label>
               <button onclick="copyOutput()" class="text-xs text-brand-400 hover:text-brand-300 font-semibold flex items-center gap-1.5 bg-brand-500/10 px-3 py-1 rounded-lg border border-brand-500/20">
                 <i class="fa-regular fa-copy"></i>Copy Output
@@ -144,12 +144,12 @@
             </div>
 
             <div class="relative flex-grow">
-              <textarea id="outputText" rows="12" readonly placeholder="Your polished, undetectable humanized prose will appear here..." class="w-full h-full min-h-[320px] bg-zinc-950/40 text-zinc-300 placeholder-zinc-600 rounded-2xl p-5 border border-zinc-800/80 outline-none resize-y text-sm leading-relaxed shadow-inner"></textarea>
+              <textarea id="outputText" rows="12" readonly placeholder="Your polished, human-readable writing will appear here..." class="w-full h-full min-h-[320px] bg-zinc-950/40 text-zinc-300 placeholder-zinc-600 rounded-2xl p-5 border border-zinc-800/80 outline-none resize-y text-sm leading-relaxed shadow-inner"></textarea>
 
               <div id="loadingOverlay" class="absolute inset-0 bg-zinc-950/80 backdrop-blur-md rounded-2xl flex flex-col items-center justify-center opacity-0 pointer-events-none transition-opacity duration-300">
                 <div class="w-12 h-12 border-4 border-brand-500/20 border-t-brand-500 rounded-full animate-spin mb-3"></div>
-                <p class="text-xs font-semibold text-zinc-200">Humanizing text streams...</p>
-                <p class="text-[11px] text-zinc-500 mt-1">Applying contextual perplexity adjustments</p>
+                <p class="text-xs font-semibold text-zinc-200">Refining text...</p>
+                <p class="text-[11px] text-zinc-500 mt-1">Improving clarity, tone, and flow</p>
               </div>
             </div>
           </div>
@@ -158,12 +158,12 @@
         <div class="mt-8 flex flex-col sm:flex-row items-center justify-between gap-4 pt-6 border-t border-zinc-800/80">
           <div class="flex items-center gap-2.5 text-xs text-zinc-400">
             <i class="fa-solid fa-shield-halved text-emerald-400"></i>
-            <span>Military-grade privacy encryption. Texts are processed in real-time and never saved.</span>
+            <span>Privacy-focused processing. Avoid submitting passwords, financial details, or sensitive personal information.</span>
           </div>
 
           <button onclick="handleHumanize()" class="w-full sm:w-auto px-9 py-4 bg-gradient-to-r from-brand-600 via-violet-600 to-indigo-600 text-white font-bold text-sm rounded-2xl shadow-xl shadow-brand-600/30 flex items-center justify-center gap-3 transition hover:-translate-y-0.5">
             <i class="fa-solid fa-bolt text-amber-300"></i>
-            <span>Humanize Text Now</span>
+            <span>Refine Text Now</span>
           </button>
         </div>
       </div>
@@ -173,8 +173,8 @@
       <div class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div class="text-center max-w-3xl mx-auto mb-16">
           <span class="text-brand-400 text-xs font-bold uppercase tracking-widest bg-brand-500/10 px-3.5 py-1.5 rounded-full border border-brand-500/20">Why Choose Humanivo</span>
-          <h2 class="text-3xl sm:text-5xl font-extrabold tracking-tight text-white mt-4">Engineered for Absolute Authenticity</h2>
-          <p class="mt-4 text-zinc-400">Advanced neural transformation designed to keep your writing completely undetected.</p>
+          <h2 class="text-3xl sm:text-5xl font-extrabold tracking-tight text-white mt-4">Engineered for Clearer, More Natural Writing</h2>
+          <p class="mt-4 text-zinc-400">Advanced writing refinement designed to improve readability, tone, and flow.</p>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -182,24 +182,24 @@
             <div class="w-14 h-14 rounded-2xl bg-brand-500/10 border border-brand-500/20 flex items-center justify-center text-brand-400 text-xl mb-6">
               <i class="fa-solid fa-brain"></i>
             </div>
-            <h3 class="text-xl font-bold text-white mb-3">Contextual Perplexity</h3>
-            <p class="text-zinc-400 text-sm leading-relaxed">Dynamically alters sentence variation, burstiness, and semantic cadence to match organic human thought patterns.</p>
+            <h3 class="text-xl font-bold text-white mb-3">Natural Sentence Flow</h3>
+            <p class="text-zinc-400 text-sm leading-relaxed">Improves sentence variation, rhythm, and readability so your writing feels smoother and easier to understand.</p>
           </div>
 
           <div class="glass-panel glass-panel-hover p-8 rounded-3xl">
             <div class="w-14 h-14 rounded-2xl bg-indigo-500/10 border border-indigo-500/20 flex items-center justify-center text-indigo-400 text-xl mb-6">
               <i class="fa-solid fa-shield-check"></i>
             </div>
-            <h3 class="text-xl font-bold text-white mb-3">100% Bypass Assurance</h3>
-            <p class="text-zinc-400 text-sm leading-relaxed">Rigorous testing ensures your finished writing effortlessly sails past detectors like GPTZero, Turnitin, and Copyleaks.</p>
+            <h3 class="text-xl font-bold text-white mb-3">Responsible Writing Support</h3>
+            <p class="text-zinc-400 text-sm leading-relaxed">Designed as a writing assistant to help users review, polish, and improve text while keeping final responsibility with the writer.</p>
           </div>
 
           <div class="glass-panel glass-panel-hover p-8 rounded-3xl">
             <div class="w-14 h-14 rounded-2xl bg-purple-500/10 border border-purple-500/20 flex items-center justify-center text-purple-400 text-xl mb-6">
               <i class="fa-solid fa-bolt-lightning"></i>
             </div>
-            <h3 class="text-xl font-bold text-white mb-3">Lightning Fast Workers</h3>
-            <p class="text-zinc-400 text-sm leading-relaxed">High-performance cloud workers process large documents, essays, and articles in seconds without losing quality.</p>
+            <h3 class="text-xl font-bold text-white mb-3">Fast Editing Workflow</h3>
+            <p class="text-zinc-400 text-sm leading-relaxed">Quickly process drafts, posts, emails, articles, and professional content without losing the original meaning.</p>
           </div>
         </div>
       </div>
@@ -226,7 +226,7 @@
             </a>
 
             <p class="mt-5 max-w-md text-sm leading-7 text-zinc-400">
-              Humanivo makes AI text transformation continuous and scalable for creators and professionals worldwide.
+              Humanivo helps creators and professionals turn rough AI-generated drafts into clearer, smoother, more natural writing.
             </p>
 
             <div class="mt-6 flex flex-wrap gap-2.5 mobile-social-row" aria-label="Sher Gul social profiles">
@@ -262,7 +262,7 @@
                 <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-50"></span>
                 <span class="relative inline-flex h-2.5 w-2.5 rounded-full bg-emerald-400"></span>
               </span>
-              All Neural Clusters Operational
+              Writing Tools Operational
             </div>
           </div>
 
@@ -280,7 +280,7 @@
             <div>
               <h4 class="mb-5 text-xs font-bold uppercase tracking-[.18em] text-white">Resources</h4>
               <ul class="space-y-3.5 text-sm">
-                <li><a href="index.html#features" class="hover:text-brand-400">Perplexity Engine</a></li>
+                <li><a href="index.html#features" class="hover:text-brand-400">Writing Features</a></li>
                 <li><a href="https://www.youtube.com/@shergulofficial" target="_blank" class="hover:text-brand-400">Tutorial Videos</a></li>
                 <li><a href="privacy.html" class="hover:text-brand-400">Privacy Policy</a></li>
                 <li><a href="terms.html" class="hover:text-brand-400">Terms of Service</a></li>
@@ -289,7 +289,7 @@
 
             <div>
               <h4 class="mb-5 text-xs font-bold uppercase tracking-[.18em] text-white">Connect</h4>
-              <p class="max-w-xs text-sm leading-6">Follow Sher Gul for product news, AI insights, and Humanivo updates.</p>
+              <p class="max-w-xs text-sm leading-6">Follow Sher Gul for product news, AI writing tips, and Humanivo updates.</p>
               <a href="https://x.com/shergulofficial" target="_blank" rel="noopener noreferrer" class="mt-5 inline-flex items-center gap-2 rounded-xl border border-brand-500/25 bg-brand-500/10 px-4 py-2.5 text-xs font-semibold text-brand-300 transition hover:-translate-y-0.5 hover:text-white">
                 Follow @shergulofficial
                 <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
@@ -348,7 +348,7 @@
       }
       outputText.select();
       document.execCommand('copy');
-      showToast('Copied humanized text to clipboard!');
+      showToast('Copied refined text to clipboard!');
     }
 
     async function handleHumanize(){
@@ -373,7 +373,7 @@
 
         if(response.ok){
           const data=await response.json();
-          outputBox.value=data.humanizedText||data.result||'Humanized output successfully returned.';
+          outputBox.value=data.humanizedText||data.result||'Refined output successfully returned.';
         }else{
           await new Promise(r=>setTimeout(r,1400));
           outputBox.value=simulateHumanizerFallback(input,currentMode);
@@ -411,7 +411,7 @@
       }
 
       result=normalizePunctuation(result);
-      return result+`\n\n[Refined via Humanivo ${mode.toUpperCase()} engine with natural semantic restructuring & burstiness calibration]`;
+      return result+`\n\n[Refined via Humanivo ${mode.toUpperCase()} mode with improved clarity, tone, and readability]`;
     }
 
     function showToast(message,isError=false){
