@@ -4,7 +4,7 @@ export default async function handler(req, res) {
     return;
   }
 
-  const { text } = req.body || {};
+  const { text, mode } = req.body || {};
 
   if (!text || typeof text !== 'string' || !text.trim()) {
     res.status(400).json({ error: 'Please provide some text.' });
@@ -23,7 +23,10 @@ export default async function handler(req, res) {
     return;
   }
 
-  const systemPrompt = `You rewrite text so it reads naturally, the way a thoughtful human would actually write it.
+  const validModes = ['standard', 'advanced', 'aggressive'];
+  const activeMode = validModes.includes(mode) ? mode : 'standard';
+
+  const basePrompt = `You rewrite text so it reads naturally, the way a thoughtful human would actually write it.
 
 Rules:
 - Preserve the original meaning, facts, and key details exactly.
@@ -31,8 +34,27 @@ Rules:
 - Cut robotic transition words like "furthermore," "moreover," "additionally," "in conclusion."
 - Use natural contractions where it fits the tone (it's, don't, that's).
 - Avoid overly formal or symmetrical phrasing.
-- Keep the same language, tone, and approximate length as the original.
+- Keep the same language and approximate length as the original.
+- Never use em dashes (—) under any circumstances. Use a period, comma, or parentheses instead.
 - Do not add commentary, notes, or explanations — output only the rewritten text.`;
+
+  const modePrompts = {
+    standard: `${basePrompt}
+- Keep the tone close to the original — light, natural smoothing only.`,
+
+    advanced: `${basePrompt}
+- Restructure sentences more freely: split long ones, merge short ones, reorder clauses.
+- Strip out any remaining hedging phrases ("it is important to note," "it is imperative").
+- Vary sentence openers so consecutive sentences don't start the same way.`,
+
+    aggressive: `${basePrompt}
+- Rewrite more substantially: change sentence structure, voice, and rhythm while keeping every fact intact.
+- Break up any remaining repetitive or symmetrical patterns.
+- Add natural imperfections a person would actually write: the occasional fragment, a conversational aside, mild redundancy where a human would naturally repeat themselves.
+- Push hardest on eliminating anything that reads as templated or formulaic.`
+  };
+
+  const systemPrompt = modePrompts[activeMode];
 
   try {
     const groqRes = await fetch('https://api.groq.com/openai/v1/chat/completions', {
@@ -47,7 +69,7 @@ Rules:
           { role: 'system', content: systemPrompt },
           { role: 'user', content: text }
         ],
-        temperature: 0.85,
+        temperature: activeMode === 'aggressive' ? 1.0 : activeMode === 'advanced' ? 0.92 : 0.85,
         max_tokens: 2048
       })
     });
@@ -60,12 +82,15 @@ Rules:
     }
 
     const data = await groqRes.json();
-    const result = data?.choices?.[0]?.message?.content?.trim();
+    let result = data?.choices?.[0]?.message?.content?.trim();
 
     if (!result) {
       res.status(502).json({ error: 'No result came back. Try again.' });
       return;
     }
+
+    // Deterministic cleanup pass — don't rely on the model alone for this
+    result = normalizePunctuation(result);
 
     res.status(200).json({ result });
   } catch (err) {
@@ -73,3 +98,9 @@ Rules:
     res.status(500).json({ error: 'Something went wrong. Try again.' });
   }
 }
+
+function normalizePunctuation(text) {
+  return text
+    .replace(/\u2014/g, ', ')   // em dash → comma
+    .replace(/\u2013/g, '-')    // en dash → regular hyphen
+    .replace(/\u2011/g, '-')    // non-breaking hyphen
