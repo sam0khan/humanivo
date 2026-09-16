@@ -1,41 +1,203 @@
 <!DOCTYPE html>
 <html lang="en" class="dark">
 <head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>FAQ - Humanivo</title>
-<meta name="description" content="Frequently asked questions about Humanivo's AI text humanizer and tools.">
+<meta name="description" content="Frequently asked questions about Humanivo, Sher Gul, and the AI text humanizer tool.">
 <meta name="robots" content="index,follow">
+
 <script src="https://cdn.tailwindcss.com"></script>
-<script>tailwind.config={darkMode:'class',theme:{extend:{colors:{brand:{50:'#f5f3ff',100:'#ede9fe',400:'#a78bfa',500:'#8b5cf6',600:'#7c3aed',700:'#6d28d9',900:'#4c1d95',950:'#2e1065'}},fontFamily:{sans:['Inter','sans-serif']}}}}</script>
+<script>
+tailwind.config={darkMode:'class',theme:{extend:{colors:{brand:{50:'#f5f3ff',100:'#ede9fe',400:'#a78bfa',500:'#8b5cf6',600:'#7c3aed',700:'#6d28d9',900:'#4c1d95',950:'#2e1065'}},fontFamily:{sans:['Inter','sans-serif']}}}}
+</script>
+
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
 <style>
-body{font-family:'Inter',sans-serif;background-color:#09090b}.glass-panel{background:rgba(18,18,24,.7);backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,.08)}.glass-panel-hover{transition:all .3s cubic-bezier(.4,0,.2,1)}.glass-panel-hover:hover{border-color:rgba(139,92,246,.3);box-shadow:0 20px 40px -15px rgba(139,92,246,.15)}.glow-orb{position:absolute;width:600px;height:600px;background:radial-gradient(circle,rgba(124,58,237,.12) 0%,rgba(0,0,0,0) 70%);pointer-events:none;z-index:0}.glow-orb-secondary{position:absolute;width:500px;height:500px;background:radial-gradient(circle,rgba(59,130,246,.08) 0%,rgba(0,0,0,0) 70%);pointer-events:none;z-index:0}
+*{box-sizing:border-box}
+html,body{width:100%;max-width:100%;overflow-x:hidden;background:#09090b}
+body{font-family:'Inter',sans-serif}
+main,header,footer,section,div{max-width:100%}
+.glass-panel{background:rgba(18,18,24,.7);backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,.08)}
+.glass-panel-hover{transition:all .3s cubic-bezier(.4,0,.2,1)}
+.glass-panel-hover:hover{border-color:rgba(139,92,246,.3);box-shadow:0 20px 40px -15px rgba(139,92,246,.15)}
+.glow-orb{position:absolute;width:600px;height:600px;background:radial-gradient(circle,rgba(124,58,237,.12) 0%,rgba(0,0,0,0) 70%);pointer-events:none;z-index:0}
+.glow-orb-secondary{position:absolute;width:500px;height:500px;background:radial-gradient(circle,rgba(59,130,246,.08) 0%,rgba(0,0,0,0) 70%);pointer-events:none;z-index:0}
 details summary{cursor:pointer;list-style:none}
 details summary::-webkit-details-marker{display:none}
 details[open] .chev{transform:rotate(180deg)}
+@media(max-width:640px){
+  .mobile-header-btn{padding:.65rem .9rem!important;font-size:.78rem!important;white-space:nowrap}
+  .mobile-logo{width:2.5rem!important;height:2.5rem!important;border-radius:1rem!important}
+  .mobile-brand-title{font-size:1rem!important}
+  .mobile-brand-subtitle{font-size:.48rem!important;letter-spacing:.14em!important}
+}
 </style>
 </head>
+
 <body class="text-zinc-100 min-h-screen flex flex-col selection:bg-brand-500 selection:text-white relative overflow-x-hidden">
-<div class="glow-orb -top-40 -left-40"></div><div class="glow-orb-secondary top-1/3 -right-40"></div>
+<div class="glow-orb -top-40 -left-40"></div>
+<div class="glow-orb-secondary top-1/3 -right-40"></div>
 
 <header class="sticky top-0 z-50 glass-panel border-b border-zinc-800/80">
-<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
-<a href="index.html" class="flex items-center space-x-3.5"><div class="w-11 h-11 rounded-2xl bg-gradient-to-tr from-brand-600 via-violet-500 to-indigo-400 flex items-center justify-center shadow-lg shadow-brand-600/30 ring-1 ring-white/20"><i class="fa-solid fa-feather-pointed text-white text-lg"></i></div><div class="flex flex-col"><span class="text-xl font-extrabold tracking-tight bg-gradient-to-r from-white via-zinc-100 to-zinc-400 bg-clip-text text-transparent">Humanivo</span><span class="text-[10px] text-brand-400 font-semibold uppercase tracking-widest">Enterprise Edition</span></div></a>
-<nav class="hidden md:flex items-center space-x-8 text-sm font-medium text-zinc-300"><a href="index.html#tool" class="hover:text-brand-400 transition-colors">Humanizer</a><a href="about.html" class="hover:text-brand-400 transition-colors">About</a><a href="faq.html" class="text-brand-400 font-semibold">FAQ</a><a href="contact.html" class="hover:text-brand-400 transition-colors">Contact</a></nav>
-<a href="index.html#tool" class="inline-flex px-5 py-2.5 text-sm font-semibold text-white bg-gradient-to-r from-brand-600 to-violet-600 rounded-xl shadow-lg shadow-brand-600/25 transition hover:-translate-y-0.5">Get Started</a>
-</div>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-3">
+    <a href="index.html" class="flex items-center gap-3 min-w-0">
+      <div class="mobile-logo w-11 h-11 rounded-2xl bg-gradient-to-tr from-brand-600 via-violet-500 to-indigo-400 flex items-center justify-center shadow-lg shadow-brand-600/30 ring-1 ring-white/20 shrink-0">
+        <i class="fa-solid fa-feather-pointed text-white text-lg"></i>
+      </div>
+      <div class="flex flex-col min-w-0">
+        <span class="mobile-brand-title text-xl font-extrabold tracking-tight bg-gradient-to-r from-white via-zinc-100 to-zinc-400 bg-clip-text text-transparent truncate">Humanivo</span>
+        <span class="mobile-brand-subtitle text-[10px] text-brand-400 font-semibold uppercase tracking-widest truncate">Enterprise Edition</span>
+      </div>
+    </a>
+
+    <nav class="hidden md:flex items-center space-x-8 text-sm font-medium text-zinc-300">
+      <a href="index.html#tool" class="hover:text-brand-400 transition-colors">Humanizer</a>
+      <a href="about.html" class="hover:text-brand-400 transition-colors">About</a>
+      <a href="faq.html" class="text-brand-400 font-semibold">FAQ</a>
+      <a href="contact.html" class="hover:text-brand-400 transition-colors">Contact</a>
+    </nav>
+
+    <a href="index.html#tool" class="mobile-header-btn inline-flex px-5 py-2.5 text-sm font-semibold text-white bg-gradient-to-r from-brand-600 to-violet-600 rounded-xl shadow-lg shadow-brand-600/25 transition hover:-translate-y-0.5 shrink-0">Get Started</a>
+  </div>
 </header>
 
-<main class="flex-grow z-10">
-<section class="relative pt-16 pb-10 lg:pt-20 lg:pb-14 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto text-center">
-<div class="inline-flex items-center space-x-2.5 px-4 py-2 rounded-full bg-brand-500/10 border border-brand-500/20 text-brand-400 text-xs font-semibold uppercase tracking-wider mb-6 backdrop-blur-md"><i class="fa-solid fa-circle-question"></i><span>Help Center</span></div>
-<h1 class="text-4xl sm:text-5xl font-extrabold tracking-tight text-white">Frequently Asked <span class="bg-gradient-to-r from-brand-400 via-violet-300 to-purple-400 bg-clip-text text-transparent">Questions</span></h1>
-<p class="mt-4 text-zinc-400 text-base max-w-2xl mx-auto leading-relaxed">Got questions about how Humanivo works or how to use our tools? Find answers below.</p>
-</section>
+<main class="flex-grow z-10 w-full overflow-x-hidden">
+  <section class="relative pt-16 pb-10 lg:pt-20 lg:pb-14 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto text-center">
+    <div class="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-brand-500/10 border border-brand-500/20 text-brand-400 text-xs font-semibold uppercase tracking-wider mb-6 backdrop-blur-md">
+      <i class="fa-solid fa-circle-question"></i>
+      <span>Help Center</span>
+    </div>
 
-<section class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 pb-24 space-y-4">
+    <h1 class="text-4xl sm:text-5xl font-extrabold tracking-tight text-white">
+      Frequently Asked
+      <span class="bg-gradient-to-r from-brand-400 via-violet-300 to-purple-400 bg-clip-text text-transparent">Questions</span>
+    </h1>
 
-<details class="glass-panel glass-panel-hover rounded-2xl border border-zinc-800 p-6 group" open>
-<summary class="flex items-center justify-between text-white font-bold text-base"><span>What is Humanivo?</span><i class="fa-solid fa-chevron-down chev text-brand-400 text-sm transition-transform"></i></summary>
-<p class="mt-4 text-zinc-400 text-sm leading-relaxed">Humanivo is a collection of online utilities and productivity tools, featuring an advanced AI Text Humanizer designed to help refine and polish text so it reads naturally.</p>
+    <p class="mt-4 text-zinc-400 text-base max-w-2xl mx-auto leading-relaxed">
+      Learn more about Humanivo, Sher Gul, and how the tool helps improve AI-generated writing.
+    </p>
+  </section>
+
+  <section class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 pb-24 space-y-4">
+
+    <div class="glass-panel rounded-3xl p-6 sm:p-8 border border-brand-500/20 mb-8">
+      <div class="flex items-center gap-3 mb-4">
+        <div class="w-12 h-12 rounded-2xl bg-gradient-to-tr from-brand-600 via-violet-500 to-indigo-400 flex items-center justify-center shadow-lg shadow-brand-600/25">
+          <i class="fa-solid fa-user text-white"></i>
+        </div>
+        <div>
+          <h2 class="text-xl font-extrabold text-white">About Sher Gul</h2>
+          <p class="text-xs uppercase tracking-widest text-brand-400 font-semibold">Founder / Creator of Humanivo</p>
+        </div>
+      </div>
+      <p class="text-zinc-400 text-sm leading-relaxed">
+        Sher Gul is the creator behind Humanivo, a digital tool built to help writers, creators, students, and professionals make AI-generated text sound more natural, polished, and human-readable. His goal with Humanivo is to make writing improvement simple, fast, and accessible for anyone who wants cleaner, smoother, and more professional content.
+      </p>
+    </div>
+
+    <details class="glass-panel glass-panel-hover rounded-2xl border border-zinc-800 p-6 group" open>
+      <summary class="flex items-center justify-between gap-4 text-white font-bold text-base">
+        <span>What is Humanivo?</span>
+        <i class="fa-solid fa-chevron-down chev text-brand-400 text-sm transition-transform"></i>
+      </summary>
+      <p class="mt-4 text-zinc-400 text-sm leading-relaxed">
+        Humanivo is an AI text humanizer and writing refinement tool. It helps transform stiff, robotic, or repetitive AI-generated text into smoother, more natural, and easier-to-read content.
+      </p>
+    </details>
+
+    <details class="glass-panel glass-panel-hover rounded-2xl border border-zinc-800 p-6 group">
+      <summary class="flex items-center justify-between gap-4 text-white font-bold text-base">
+        <span>Who is Sher Gul?</span>
+        <i class="fa-solid fa-chevron-down chev text-brand-400 text-sm transition-transform"></i>
+      </summary>
+      <p class="mt-4 text-zinc-400 text-sm leading-relaxed">
+        Sher Gul is the founder and creator of Humanivo. He built the platform to support people who use AI tools but still want their final writing to feel clear, natural, and personal.
+      </p>
+    </details>
+
+    <details class="glass-panel glass-panel-hover rounded-2xl border border-zinc-800 p-6 group">
+      <summary class="flex items-center justify-between gap-4 text-white font-bold text-base">
+        <span>How does Humanivo work?</span>
+        <i class="fa-solid fa-chevron-down chev text-brand-400 text-sm transition-transform"></i>
+      </summary>
+      <p class="mt-4 text-zinc-400 text-sm leading-relaxed">
+        You paste your text into the tool, choose a transformation mode, and Humanivo rewrites the content with better sentence flow, natural wording, improved rhythm, and cleaner structure.
+      </p>
+    </details>
+
+    <details class="glass-panel glass-panel-hover rounded-2xl border border-zinc-800 p-6 group">
+      <summary class="flex items-center justify-between gap-4 text-white font-bold text-base">
+        <span>Can Humanivo improve ChatGPT or Claude text?</span>
+        <i class="fa-solid fa-chevron-down chev text-brand-400 text-sm transition-transform"></i>
+      </summary>
+      <p class="mt-4 text-zinc-400 text-sm leading-relaxed">
+        Yes. Humanivo is useful for text written by ChatGPT, Claude, Gemini, or other AI tools. It can make the writing sound less mechanical and more natural while keeping the original meaning.
+      </p>
+    </details>
+
+    <details class="glass-panel glass-panel-hover rounded-2xl border border-zinc-800 p-6 group">
+      <summary class="flex items-center justify-between gap-4 text-white font-bold text-base">
+        <span>What are Standard, Advanced, and Aggressive modes?</span>
+        <i class="fa-solid fa-chevron-down chev text-brand-400 text-sm transition-transform"></i>
+      </summary>
+      <p class="mt-4 text-zinc-400 text-sm leading-relaxed">
+        Standard mode lightly polishes the text. Advanced mode makes stronger wording and flow improvements. Aggressive mode rewrites more heavily for a more natural and conversational result.
+      </p>
+    </details>
+
+    <details class="glass-panel glass-panel-hover rounded-2xl border border-zinc-800 p-6 group">
+      <summary class="flex items-center justify-between gap-4 text-white font-bold text-base">
+        <span>Does Humanivo change the meaning of my text?</span>
+        <i class="fa-solid fa-chevron-down chev text-brand-400 text-sm transition-transform"></i>
+      </summary>
+      <p class="mt-4 text-zinc-400 text-sm leading-relaxed">
+        Humanivo is designed to preserve the main meaning and intent of your writing. Still, you should always review the final result before publishing, submitting, or sending it.
+      </p>
+    </details>
+
+    <details class="glass-panel glass-panel-hover rounded-2xl border border-zinc-800 p-6 group">
+      <summary class="flex items-center justify-between gap-4 text-white font-bold text-base">
+        <span>Is my text saved or stored?</span>
+        <i class="fa-solid fa-chevron-down chev text-brand-400 text-sm transition-transform"></i>
+      </summary>
+      <p class="mt-4 text-zinc-400 text-sm leading-relaxed">
+        Humanivo is presented as a privacy-focused tool. For best practice, avoid pasting passwords, private records, financial details, or sensitive personal information into any online writing tool.
+      </p>
+    </details>
+
+    <details class="glass-panel glass-panel-hover rounded-2xl border border-zinc-800 p-6 group">
+      <summary class="flex items-center justify-between gap-4 text-white font-bold text-base">
+        <span>Who can use Humanivo?</span>
+        <i class="fa-solid fa-chevron-down chev text-brand-400 text-sm transition-transform"></i>
+      </summary>
+      <p class="mt-4 text-zinc-400 text-sm leading-relaxed">
+        Humanivo can be used by creators, marketers, bloggers, students, professionals, business owners, and anyone who wants to make rough AI-generated text sound cleaner and more human.
+      </p>
+    </details>
+
+    <details class="glass-panel glass-panel-hover rounded-2xl border border-zinc-800 p-6 group">
+      <summary class="flex items-center justify-between gap-4 text-white font-bold text-base">
+        <span>How can I contact Sher Gul or Humanivo?</span>
+        <i class="fa-solid fa-chevron-down chev text-brand-400 text-sm transition-transform"></i>
+      </summary>
+      <p class="mt-4 text-zinc-400 text-sm leading-relaxed">
+        You can visit the Contact page and connect through the official Sher Gul social profiles, including X, LinkedIn, YouTube, Threads, and Instagram.
+      </p>
+    </details>
+
+  </section>
+</main>
+
+<footer class="relative z-10 border-t border-white/[.07] bg-[#07070a] text-zinc-500 px-4 py-8 text-center text-xs">
+  <p>&copy; 2026 Humanivo Inc. All Rights Reserved.</p>
+  <p class="mt-2">
+    Made with <span class="text-red-400">&#10084;</span> by
+    <a href="https://www.instagram.com/shergulofficial" target="_blank" class="font-semibold text-zinc-300 hover:text-brand-400">Sher Gul</a>
+  </p>
+</footer>
+
+</body>
+</html>
