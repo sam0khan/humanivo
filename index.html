@@ -1,14 +1,50 @@
 <!DOCTYPE html>
 <html lang="en" class="dark">
 <head>
-  <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
   <title>Humanivo - Advanced AI Text Humanizer &amp; Bypass Engine</title>
+
   <script src="https://cdn.tailwindcss.com"></script>
-  <script>tailwind.config={darkMode:'class',theme:{extend:{colors:{brand:{50:'#f5f3ff',100:'#ede9fe',400:'#a78bfa',500:'#8b5cf6',600:'#7c3aed',700:'#6d28d9',900:'#4c1d95',950:'#2e1065'}},fontFamily:{sans:['Inter','sans-serif']}}}}</script>
+  <script>
+    tailwind.config={darkMode:'class',theme:{extend:{colors:{brand:{50:'#f5f3ff',100:'#ede9fe',400:'#a78bfa',500:'#8b5cf6',600:'#7c3aed',700:'#6d28d9',900:'#4c1d95',950:'#2e1065'}},fontFamily:{sans:['Inter','sans-serif']}}}}
+  </script>
+
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
   <style>
-    body{font-family:'Inter',sans-serif;background-color:#09090b}.glass-panel{background:rgba(18,18,24,.7);backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,.08)}.glass-panel-hover{transition:all .3s cubic-bezier(.4,0,.2,1)}.glass-panel-hover:hover{border-color:rgba(139,92,246,.3);box-shadow:0 20px 40px -15px rgba(139,92,246,.15)}.glow-orb{position:absolute;width:600px;height:600px;background:radial-gradient(circle,rgba(124,58,237,.12) 0%,rgba(0,0,0,0) 70%);pointer-events:none;z-index:0}.glow-orb-secondary{position:absolute;width:500px;height:500px;background:radial-gradient(circle,rgba(59,130,246,.08) 0%,rgba(0,0,0,0) 70%);pointer-events:none;z-index:0}textarea::-webkit-scrollbar{width:6px}textarea::-webkit-scrollbar-track{background:rgba(0,0,0,.1)}textarea::-webkit-scrollbar-thumb{background:rgba(255,255,255,.15);border-radius:4px}textarea::-webkit-scrollbar-thumb:hover{background:rgba(139,92,246,.5)}
+    *{box-sizing:border-box}
+    html,body{width:100%;max-width:100%;overflow-x:hidden;background:#09090b}
+    body{font-family:'Inter',sans-serif}
+    img,svg,video,canvas,iframe{max-width:100%}
+    main,header,footer,section,div{max-width:100%}
+    .glass-panel{background:rgba(18,18,24,.7);backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,.08)}
+    .glass-panel-hover{transition:all .3s cubic-bezier(.4,0,.2,1)}
+    .glass-panel-hover:hover{border-color:rgba(139,92,246,.3);box-shadow:0 20px 40px -15px rgba(139,92,246,.15)}
+    .glow-orb{position:absolute;width:600px;height:600px;background:radial-gradient(circle,rgba(124,58,237,.12) 0%,rgba(0,0,0,0) 70%);pointer-events:none;z-index:0}
+    .glow-orb-secondary{position:absolute;width:500px;height:500px;background:radial-gradient(circle,rgba(59,130,246,.08) 0%,rgba(0,0,0,0) 70%);pointer-events:none;z-index:0}
+    textarea::-webkit-scrollbar{width:6px}
+    textarea::-webkit-scrollbar-track{background:rgba(0,0,0,.1)}
+    textarea::-webkit-scrollbar-thumb{background:rgba(255,255,255,.15);border-radius:4px}
+    textarea::-webkit-scrollbar-thumb:hover{background:rgba(139,92,246,.5)}
+    footer a,footer p,footer li,footer h4,footer span{overflow-wrap:anywhere}
+    @media(max-width:640px){
+      .mobile-hide{display:none!important}
+      .mobile-header-btn{padding:.65rem .9rem!important;font-size:.78rem!important;white-space:nowrap}
+      .mobile-brand-title{font-size:1rem!important}
+      .mobile-brand-subtitle{font-size:.48rem!important;letter-spacing:.14em!important}
+      .mobile-logo{width:2.5rem!important;height:2.5rem!important;border-radius:1rem!important}
+      .mobile-hero-title{font-size:2.08rem!important;line-height:1.12!important}
+      .mobile-hero-badge{font-size:.62rem!important;letter-spacing:.08em!important;padding:.55rem .75rem!important}
+      .mobile-tool-card{padding:1.35rem!important;border-radius:1.5rem!important}
+      .mobile-mode-tabs{width:100%;overflow-x:auto}
+      .mobile-mode-tabs button{flex:1;min-width:92px}
+      .mobile-footer-card{border-radius:1.5rem!important;padding:1.5rem!important}
+      .mobile-social-row{gap:.65rem!important}
+      .mobile-social-row a{width:46px!important;height:46px!important;flex-shrink:0}
+      .mobile-footer-links{grid-template-columns:1fr!important}
+    }
   </style>
 </head>
 
@@ -18,14 +54,14 @@
   <div class="glow-orb bottom-10 left-1/4"></div>
 
   <header class="sticky top-0 z-50 glass-panel border-b border-zinc-800/80">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
-      <a href="index.html" class="flex items-center space-x-3.5">
-        <div class="w-11 h-11 rounded-2xl bg-gradient-to-tr from-brand-600 via-violet-500 to-indigo-400 flex items-center justify-center shadow-lg shadow-brand-600/30 ring-1 ring-white/20">
+    <div class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-3">
+      <a href="index.html" class="flex items-center gap-3 min-w-0">
+        <div class="mobile-logo w-11 h-11 rounded-2xl bg-gradient-to-tr from-brand-600 via-violet-500 to-indigo-400 flex items-center justify-center shadow-lg shadow-brand-600/30 ring-1 ring-white/20 shrink-0">
           <i class="fa-solid fa-feather-pointed text-white text-lg"></i>
         </div>
-        <div class="flex flex-col">
-          <span class="text-xl font-extrabold tracking-tight bg-gradient-to-r from-white via-zinc-100 to-zinc-400 bg-clip-text text-transparent">Humanivo</span>
-          <span class="text-[10px] text-brand-400 font-semibold uppercase tracking-widest">Enterprise Edition</span>
+        <div class="flex flex-col min-w-0">
+          <span class="mobile-brand-title text-xl font-extrabold tracking-tight bg-gradient-to-r from-white via-zinc-100 to-zinc-400 bg-clip-text text-transparent truncate">Humanivo</span>
+          <span class="mobile-brand-subtitle text-[10px] text-brand-400 font-semibold uppercase tracking-widest truncate">Enterprise Edition</span>
         </div>
       </a>
 
@@ -36,21 +72,21 @@
         <a href="contact.html" class="hover:text-brand-400 transition-colors">Contact</a>
       </nav>
 
-      <div class="flex items-center space-x-4">
-        <a href="index.html#tool" class="hidden sm:inline-flex px-4 py-2 text-sm font-medium text-zinc-300 hover:text-white">Sign In</a>
-        <a href="index.html#tool" class="inline-flex px-5 py-2.5 text-sm font-semibold text-white bg-gradient-to-r from-brand-600 to-violet-600 rounded-xl shadow-lg shadow-brand-600/25 transition hover:-translate-y-0.5">Get Started Free</a>
+      <div class="flex items-center gap-3 shrink-0">
+        <a href="index.html#tool" class="mobile-hide hidden sm:inline-flex px-4 py-2 text-sm font-medium text-zinc-300 hover:text-white">Sign In</a>
+        <a href="index.html#tool" class="mobile-header-btn inline-flex px-5 py-2.5 text-sm font-semibold text-white bg-gradient-to-r from-brand-600 to-violet-600 rounded-xl shadow-lg shadow-brand-600/25 transition hover:-translate-y-0.5">Get Started Free</a>
       </div>
     </div>
   </header>
 
-  <main class="flex-grow z-10">
-    <section class="relative pt-16 pb-14 lg:pt-24 lg:pb-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto text-center">
-      <div class="inline-flex items-center space-x-2.5 px-4 py-2 rounded-full bg-brand-500/10 border border-brand-500/20 text-brand-400 text-xs font-semibold uppercase tracking-wider mb-6 backdrop-blur-md">
+  <main class="flex-grow z-10 w-full overflow-x-hidden">
+    <section class="relative pt-16 pb-14 lg:pt-24 lg:pb-20 px-4 sm:px-6 lg:px-8 w-full max-w-7xl mx-auto text-center">
+      <div class="mobile-hero-badge inline-flex items-center gap-2 px-4 py-2 rounded-full bg-brand-500/10 border border-brand-500/20 text-brand-400 text-xs font-semibold uppercase tracking-wider mb-6 backdrop-blur-md">
         <i class="fa-solid fa-wand-magic-sparkles animate-pulse"></i>
         <span>Next-Gen Neural Language Reconstructor</span>
       </div>
 
-      <h1 class="text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight text-white max-w-5xl mx-auto leading-[1.08]">
+      <h1 class="mobile-hero-title text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight text-white max-w-5xl mx-auto leading-[1.08]">
         Transform Robotic AI Writing into
         <span class="bg-gradient-to-r from-brand-400 via-violet-300 to-purple-400 bg-clip-text text-transparent">Indistinguishable Human Prose</span>
       </h1>
@@ -59,26 +95,26 @@
         Bypass advanced classifiers like GPTZero, Turnitin, and Originality.ai instantly while preserving your exact meaning, style, and professional intent.
       </p>
 
-      <div class="mt-10 flex flex-wrap items-center justify-center gap-6 sm:gap-10 text-xs text-zinc-400 font-medium">
+      <div class="mt-10 flex flex-wrap items-center justify-center gap-5 sm:gap-10 text-xs text-zinc-400 font-medium">
         <div class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-emerald-400"></i>99.8% Bypass Success Rate</div>
         <div class="flex items-center gap-2"><i class="fa-solid fa-bolt text-amber-400"></i>Instant Processing Engine</div>
         <div class="flex items-center gap-2"><i class="fa-solid fa-shield-halved text-brand-400"></i>Strict Zero-Log Privacy</div>
       </div>
     </section>
 
-    <section id="tool" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-24">
-      <div class="glass-panel rounded-3xl p-6 sm:p-10 shadow-2xl relative overflow-hidden border border-zinc-800">
+    <section id="tool" class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-24">
+      <div class="mobile-tool-card glass-panel rounded-3xl p-6 sm:p-10 shadow-2xl relative overflow-hidden border border-zinc-800">
         <div class="flex flex-wrap items-center justify-between gap-4 pb-6 border-b border-zinc-800/80 mb-6">
-          <div class="flex flex-wrap items-center gap-3">
+          <div class="flex flex-wrap items-center gap-3 w-full sm:w-auto">
             <span class="text-xs font-bold text-zinc-400 uppercase tracking-wider">Transformation Mode:</span>
-            <div class="inline-flex bg-zinc-950/80 rounded-xl p-1.5 border border-zinc-800 text-xs font-semibold">
+            <div class="mobile-mode-tabs inline-flex bg-zinc-950/80 rounded-xl p-1.5 border border-zinc-800 text-xs font-semibold">
               <button onclick="setMode('standard')" id="btn-standard" class="px-4 py-2 rounded-lg bg-brand-600 text-white shadow-md shadow-brand-600/30 transition-all">Standard</button>
               <button onclick="setMode('advanced')" id="btn-advanced" class="px-4 py-2 rounded-lg text-zinc-400 hover:text-white transition-all">Advanced</button>
               <button onclick="setMode('aggressive')" id="btn-aggressive" class="px-4 py-2 rounded-lg text-zinc-400 hover:text-white transition-all">Aggressive</button>
             </div>
           </div>
 
-          <div class="flex items-center space-x-4 text-xs text-zinc-400">
+          <div class="flex items-center gap-3 text-xs text-zinc-400">
             <span id="word-count" class="font-medium bg-zinc-900 px-3 py-1.5 rounded-lg border border-zinc-800">0 words</span>
             <button onclick="clearText()" class="hover:text-red-400 flex items-center gap-1.5 bg-zinc-900 px-3 py-1.5 rounded-lg border border-zinc-800">
               <i class="fa-solid fa-trash-can"></i>Clear All
@@ -88,7 +124,7 @@
 
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
           <div class="flex flex-col space-y-3">
-            <div class="flex justify-between items-center px-1">
+            <div class="flex flex-wrap justify-between items-center gap-2 px-1">
               <label for="inputText" class="text-sm font-semibold text-zinc-200 flex items-center gap-2">
                 <i class="fa-solid fa-keyboard text-brand-400"></i>Original AI Text
               </label>
@@ -98,7 +134,7 @@
           </div>
 
           <div class="flex flex-col space-y-3">
-            <div class="flex justify-between items-center px-1">
+            <div class="flex flex-wrap justify-between items-center gap-2 px-1">
               <label for="outputText" class="text-sm font-semibold text-zinc-200 flex items-center gap-2">
                 <i class="fa-solid fa-wand-magic-sparkles text-violet-400"></i>Humanized Result
               </label>
@@ -120,12 +156,12 @@
         </div>
 
         <div class="mt-8 flex flex-col sm:flex-row items-center justify-between gap-4 pt-6 border-t border-zinc-800/80">
-          <div class="flex items-center space-x-2.5 text-xs text-zinc-400">
+          <div class="flex items-center gap-2.5 text-xs text-zinc-400">
             <i class="fa-solid fa-shield-halved text-emerald-400"></i>
             <span>Military-grade privacy encryption. Texts are processed in real-time and never saved.</span>
           </div>
 
-          <button onclick="handleHumanize()" class="w-full sm:w-auto px-9 py-4 bg-gradient-to-r from-brand-600 via-violet-600 to-indigo-600 text-white font-bold text-sm rounded-2xl shadow-xl shadow-brand-600/30 flex items-center justify-center space-x-3 transition hover:-translate-y-0.5">
+          <button onclick="handleHumanize()" class="w-full sm:w-auto px-9 py-4 bg-gradient-to-r from-brand-600 via-violet-600 to-indigo-600 text-white font-bold text-sm rounded-2xl shadow-xl shadow-brand-600/30 flex items-center justify-center gap-3 transition hover:-translate-y-0.5">
             <i class="fa-solid fa-bolt text-amber-300"></i>
             <span>Humanize Text Now</span>
           </button>
@@ -134,7 +170,7 @@
     </section>
 
     <section id="features" class="py-24 border-t border-zinc-900 bg-zinc-950/50 relative overflow-hidden">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div class="text-center max-w-3xl mx-auto mb-16">
           <span class="text-brand-400 text-xs font-bold uppercase tracking-widest bg-brand-500/10 px-3.5 py-1.5 rounded-full border border-brand-500/20">Why Choose Humanivo</span>
           <h2 class="text-3xl sm:text-5xl font-extrabold tracking-tight text-white mt-4">Engineered for Absolute Authenticity</h2>
@@ -175,8 +211,8 @@
     <div class="pointer-events-none absolute -left-32 top-8 h-80 w-80 rounded-full bg-brand-600/10 blur-3xl"></div>
     <div class="pointer-events-none absolute -right-32 bottom-0 h-72 w-72 rounded-full bg-indigo-500/10 blur-3xl"></div>
 
-    <div class="relative mx-auto max-w-7xl px-5 py-14 sm:px-6 sm:py-16 lg:px-8">
-      <div class="rounded-[2rem] border border-white/[.08] bg-white/[.025] p-6 shadow-2xl shadow-black/30 backdrop-blur-sm sm:p-8 lg:p-10">
+    <div class="relative mx-auto w-full max-w-7xl px-5 py-14 sm:px-6 sm:py-16 lg:px-8">
+      <div class="mobile-footer-card rounded-[2rem] border border-white/[.08] bg-white/[.025] p-6 shadow-2xl shadow-black/30 backdrop-blur-sm sm:p-8 lg:p-10">
         <div class="grid grid-cols-1 gap-10 lg:grid-cols-12 lg:gap-12">
           <div class="lg:col-span-5">
             <a href="index.html" class="inline-flex items-center gap-3.5">
@@ -193,28 +229,28 @@
               Humanivo makes AI text transformation continuous and scalable for creators and professionals worldwide.
             </p>
 
-            <div class="mt-6 flex flex-wrap gap-2.5" aria-label="Sher Gul social profiles">
-              <a href="https://www.facebook.com/shergulofficial" target="_blank" rel="noopener noreferrer" aria-label="Facebook" title="Facebook — @shergulofficial" class="flex h-10 w-10 items-center justify-center rounded-xl border border-white/[.08] bg-white/[.04] text-zinc-300 transition hover:-translate-y-1 hover:border-brand-400/50 hover:bg-brand-500/10 hover:text-white">
+            <div class="mt-6 flex flex-wrap gap-2.5 mobile-social-row" aria-label="Sher Gul social profiles">
+              <a href="https://www.facebook.com/shergulofficial" target="_blank" rel="noopener noreferrer" aria-label="Facebook" title="Facebook - @shergulofficial" class="flex h-10 w-10 items-center justify-center rounded-xl border border-white/[.08] bg-white/[.04] text-zinc-300 transition hover:-translate-y-1 hover:border-brand-400/50 hover:bg-brand-500/10 hover:text-white">
                 <i class="fa-brands fa-facebook-f"></i>
               </a>
 
-              <a href="https://x.com/shergulofficial" target="_blank" rel="noopener noreferrer" aria-label="X" title="X — @shergulofficial" class="flex h-10 w-10 items-center justify-center rounded-xl border border-white/[.08] bg-white/[.04] text-sm font-extrabold text-zinc-300 transition hover:-translate-y-1 hover:border-brand-400/50 hover:bg-brand-500/10 hover:text-white">
+              <a href="https://x.com/shergulofficial" target="_blank" rel="noopener noreferrer" aria-label="X" title="X - @shergulofficial" class="flex h-10 w-10 items-center justify-center rounded-xl border border-white/[.08] bg-white/[.04] text-base font-black text-zinc-300 transition hover:-translate-y-1 hover:border-brand-400/50 hover:bg-brand-500/10 hover:text-white">
                 X
               </a>
 
-              <a href="https://www.linkedin.com/in/shergulofficial" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" title="LinkedIn — @shergulofficial" class="flex h-10 w-10 items-center justify-center rounded-xl border border-white/[.08] bg-white/[.04] text-zinc-300 transition hover:-translate-y-1 hover:border-brand-400/50 hover:bg-brand-500/10 hover:text-white">
+              <a href="https://www.linkedin.com/in/shergulofficial" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" title="LinkedIn - @shergulofficial" class="flex h-10 w-10 items-center justify-center rounded-xl border border-white/[.08] bg-white/[.04] text-zinc-300 transition hover:-translate-y-1 hover:border-brand-400/50 hover:bg-brand-500/10 hover:text-white">
                 <i class="fa-brands fa-linkedin-in"></i>
               </a>
 
-              <a href="https://www.youtube.com/@shergulofficial" target="_blank" rel="noopener noreferrer" aria-label="YouTube" title="YouTube — @shergulofficial" class="flex h-10 w-10 items-center justify-center rounded-xl border border-white/[.08] bg-white/[.04] text-zinc-300 transition hover:-translate-y-1 hover:border-brand-400/50 hover:bg-brand-500/10 hover:text-white">
+              <a href="https://www.youtube.com/@shergulofficial" target="_blank" rel="noopener noreferrer" aria-label="YouTube" title="YouTube - @shergulofficial" class="flex h-10 w-10 items-center justify-center rounded-xl border border-white/[.08] bg-white/[.04] text-zinc-300 transition hover:-translate-y-1 hover:border-brand-400/50 hover:bg-brand-500/10 hover:text-white">
                 <i class="fa-brands fa-youtube"></i>
               </a>
 
-              <a href="https://www.threads.net/@shergulofficial" target="_blank" rel="noopener noreferrer" aria-label="Threads" title="Threads — @shergulofficial" class="flex h-10 w-10 items-center justify-center rounded-xl border border-white/[.08] bg-white/[.04] text-sm font-bold text-zinc-300 transition hover:-translate-y-1 hover:border-brand-400/50 hover:bg-brand-500/10 hover:text-white">
+              <a href="https://www.threads.net/@shergulofficial" target="_blank" rel="noopener noreferrer" aria-label="Threads" title="Threads - @shergulofficial" class="flex h-10 w-10 items-center justify-center rounded-xl border border-white/[.08] bg-white/[.04] text-base font-black text-zinc-300 transition hover:-translate-y-1 hover:border-brand-400/50 hover:bg-brand-500/10 hover:text-white">
                 @
               </a>
 
-              <a href="https://www.instagram.com/shergulofficial" target="_blank" rel="noopener noreferrer" aria-label="Instagram" title="Instagram — @shergulofficial" class="flex h-10 w-10 items-center justify-center rounded-xl border border-white/[.08] bg-white/[.04] text-zinc-300 transition hover:-translate-y-1 hover:border-brand-400/50 hover:bg-brand-500/10 hover:text-white">
+              <a href="https://www.instagram.com/shergulofficial" target="_blank" rel="noopener noreferrer" aria-label="Instagram" title="Instagram - @shergulofficial" class="flex h-10 w-10 items-center justify-center rounded-xl border border-white/[.08] bg-white/[.04] text-zinc-300 transition hover:-translate-y-1 hover:border-brand-400/50 hover:bg-brand-500/10 hover:text-white">
                 <i class="fa-brands fa-instagram"></i>
               </a>
             </div>
@@ -230,7 +266,7 @@
             </div>
           </div>
 
-          <div class="grid grid-cols-2 gap-8 sm:grid-cols-3 lg:col-span-7">
+          <div class="mobile-footer-links grid grid-cols-1 gap-8 sm:grid-cols-3 lg:col-span-7">
             <div>
               <h4 class="mb-5 text-xs font-bold uppercase tracking-[.18em] text-white">General</h4>
               <ul class="space-y-3.5 text-sm">
@@ -251,7 +287,7 @@
               </ul>
             </div>
 
-            <div class="col-span-2 sm:col-span-1">
+            <div>
               <h4 class="mb-5 text-xs font-bold uppercase tracking-[.18em] text-white">Connect</h4>
               <p class="max-w-xs text-sm leading-6">Follow Sher Gul for product news, AI insights, and Humanivo updates.</p>
               <a href="https://x.com/shergulofficial" target="_blank" rel="noopener noreferrer" class="mt-5 inline-flex items-center gap-2 rounded-xl border border-brand-500/25 bg-brand-500/10 px-4 py-2.5 text-xs font-semibold text-brand-300 transition hover:-translate-y-0.5 hover:text-white">
@@ -352,12 +388,7 @@
     }
 
     function normalizePunctuation(text){
-      return text
-        .replace(/\u2014/g,', ')
-        .replace(/\u2013/g,'-')
-        .replace(/\u2011/g,'-')
-        .replace(/\s*,\s*,/g,',')
-        .replace(/\s{2,}/g,' ');
+      return text.replace(/\u2014/g,', ').replace(/\u2013/g,'-').replace(/\u2011/g,'-').replace(/\s*,\s*,/g,',').replace(/\s{2,}/g,' ');
     }
 
     function simulateHumanizerFallback(text,mode){
@@ -372,10 +403,7 @@
         .replace(/utilize/g,'use');
 
       if(mode==='advanced'||mode==='aggressive'){
-        result=result
-          .replace(/In today's[^,]*,/g,'Right now,')
-          .replace(/plays a pivotal role/g,'matters a lot')
-          .replace(/significantly enhance/g,'noticeably improve');
+        result=result.replace(/In today's[^,]*,/g,'Right now,').replace(/plays a pivotal role/g,'matters a lot').replace(/significantly enhance/g,'noticeably improve');
       }
 
       if(mode==='aggressive'){
@@ -383,7 +411,6 @@
       }
 
       result=normalizePunctuation(result);
-
       return result+`\n\n[Refined via Humanivo ${mode.toUpperCase()} engine with natural semantic restructuring & burstiness calibration]`;
     }
 
