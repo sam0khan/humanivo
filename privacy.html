@@ -1,26 +1,48 @@
 <!DOCTYPE html>
 <html lang="en" class="dark">
 <head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>Privacy Policy - Humanivo</title>
-<meta name="description" content="Privacy Policy explaining how Humanivo collects, uses, and protects data, including cookies and third-party advertising.">
+<meta name="description" content="Privacy Policy explaining how Humanivo collects, uses, and protects data, including cookies, analytics, contact forms, and third-party advertising.">
 <meta name="robots" content="index,follow">
 <script src="https://cdn.tailwindcss.com"></script>
 <script>tailwind.config={darkMode:'class',theme:{extend:{colors:{brand:{50:'#f5f3ff',100:'#ede9fe',400:'#a78bfa',500:'#8b5cf6',600:'#7c3aed',700:'#6d28d9',900:'#4c1d95',950:'#2e1065'}},fontFamily:{sans:['Inter','sans-serif']}}}}</script>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <style>
-body{font-family:'Inter',sans-serif;background-color:#09090b}.glass-panel{background:rgba(18,18,24,.7);backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,.08)}.glow-orb{position:absolute;width:600px;height:600px;background:radial-gradient(circle,rgba(124,58,237,.12) 0%,rgba(0,0,0,0) 70%);pointer-events:none;z-index:0}.glow-orb-secondary{position:absolute;width:500px;height:500px;background:radial-gradient(circle,rgba(59,130,246,.08) 0%,rgba(0,0,0,0) 70%);pointer-events:none;z-index:0}.legal-content h2{font-size:1.35rem;font-weight:700;color:#fff;margin-top:2rem;margin-bottom:.75rem}.legal-content h2:first-child{margin-top:0}.legal-content p{color:#a1a1aa;font-size:.925rem;line-height:1.75;margin-bottom:1rem}.legal-content ul{color:#a1a1aa;font-size:.925rem;line-height:1.75;margin-bottom:1rem;padding-left:1.25rem;list-style:disc}.legal-content li{margin-bottom:.5rem}.legal-content a{color:#a78bfa;text-decoration:none}.legal-content a:hover{text-decoration:underline}
+*{box-sizing:border-box}
+html,body{width:100%;max-width:100%;overflow-x:hidden;background:#09090b}
+body{font-family:'Inter',sans-serif}
+.glass-panel{background:rgba(18,18,24,.7);backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,.08)}
+.glow-orb{position:absolute;width:600px;height:600px;background:radial-gradient(circle,rgba(124,58,237,.12) 0%,rgba(0,0,0,0) 70%);pointer-events:none;z-index:0}
+.glow-orb-secondary{position:absolute;width:500px;height:500px;background:radial-gradient(circle,rgba(59,130,246,.08) 0%,rgba(0,0,0,0) 70%);pointer-events:none;z-index:0}
+.legal-content h2{font-size:1.35rem;font-weight:700;color:#fff;margin-top:2rem;margin-bottom:.75rem}
+.legal-content h2:first-child{margin-top:0}
+.legal-content p{color:#a1a1aa;font-size:.925rem;line-height:1.75;margin-bottom:1rem}
+.legal-content a{color:#a78bfa;text-decoration:none}
+.legal-content a:hover{text-decoration:underline}
+@media(max-width:640px){
+.mobile-header-btn{padding:.65rem .9rem!important;font-size:.78rem!important;white-space:nowrap}
+.mobile-logo{width:2.5rem!important;height:2.5rem!important;border-radius:1rem!important}
+.mobile-brand-title{font-size:1rem!important}
+.mobile-brand-subtitle{font-size:.48rem!important;letter-spacing:.14em!important}
+}
 </style>
 </head>
+
 <body class="text-zinc-100 min-h-screen flex flex-col selection:bg-brand-500 selection:text-white relative overflow-x-hidden">
-<div class="glow-orb -top-40 -left-40"></div><div class="glow-orb-secondary top-1/3 -right-40"></div>
+<div class="glow-orb -top-40 -left-40"></div>
+<div class="glow-orb-secondary top-1/3 -right-40"></div>
 
 <header class="sticky top-0 z-50 glass-panel border-b border-zinc-800/80">
-<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
-<a href="index.html" class="flex items-center space-x-3.5"><div class="w-11 h-11 rounded-2xl bg-gradient-to-tr from-brand-600 via-violet-500 to-indigo-400 flex items-center justify-center shadow-lg shadow-brand-600/30 ring-1 ring-white/20"><i class="fa-solid fa-feather-pointed text-white text-lg"></i></div><div class="flex flex-col"><span class="text-xl font-extrabold tracking-tight bg-gradient-to-r from-white via-zinc-100 to-zinc-400 bg-clip-text text-transparent">Humanivo</span><span class="text-[10px] text-brand-400 font-semibold uppercase tracking-widest">Enterprise Edition</span></div></a>
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-3">
+<a href="index.html" class="flex items-center gap-3 min-w-0">
+<div class="mobile-logo w-11 h-11 rounded-2xl bg-gradient-to-tr from-brand-600 via-violet-500 to-indigo-400 flex items-center justify-center shadow-lg shadow-brand-600/30 ring-1 ring-white/20 shrink-0"><i class="fa-solid fa-feather-pointed text-white text-lg"></i></div>
+<div class="flex flex-col min-w-0"><span class="mobile-brand-title text-xl font-extrabold tracking-tight bg-gradient-to-r from-white via-zinc-100 to-zinc-400 bg-clip-text text-transparent truncate">Humanivo</span><span class="mobile-brand-subtitle text-[10px] text-brand-400 font-semibold uppercase tracking-widest truncate">Enterprise Edition</span></div>
+</a>
 <nav class="hidden md:flex items-center space-x-8 text-sm font-medium text-zinc-300"><a href="index.html#tool" class="hover:text-brand-400 transition-colors">Humanizer</a><a href="about.html" class="hover:text-brand-400 transition-colors">About</a><a href="faq.html" class="hover:text-brand-400 transition-colors">FAQ</a><a href="contact.html" class="hover:text-brand-400 transition-colors">Contact</a></nav>
-<a href="index.html#tool" class="inline-flex px-5 py-2.5 text-sm font-semibold text-white bg-gradient-to-r from-brand-600 to-violet-600 rounded-xl shadow-lg shadow-brand-600/25 transition hover:-translate-y-0.5">Get Started</a>
+<a href="index.html#tool" class="mobile-header-btn inline-flex px-5 py-2.5 text-sm font-semibold text-white bg-gradient-to-r from-brand-600 to-violet-600 rounded-xl shadow-lg shadow-brand-600/25 transition hover:-translate-y-0.5 shrink-0">Get Started</a>
 </div>
 </header>
 
@@ -35,16 +57,34 @@ body{font-family:'Inter',sans-serif;background-color:#09090b}.glass-panel{backgr
 <div class="glass-panel rounded-3xl p-6 sm:p-10 border border-zinc-800 legal-content">
 
 <h2>1. Introduction</h2>
-<p>Text submitted to our tools is processed to generate output and is not intentionally retained after your session. Contact form submissions are retained only as long as needed to address your inquiry.</p>
+<p>Humanivo respects your privacy. This Privacy Policy explains how we collect, use, and protect information when you use our website, AI writing tools, contact forms, and related pages.</p>
+
+<h2>2. Information We Collect</h2>
+<p>We may collect information you voluntarily provide, such as your name, email address, message details, or other information submitted through contact forms. We may also collect basic technical information such as browser type, device type, pages visited, and general usage data.</p>
+
+<h2>3. How We Use Information</h2>
+<p>We use information to operate Humanivo, respond to inquiries, improve our tools, maintain website security, understand usage trends, and improve the user experience.</p>
+
+<h2>4. Text Submitted to Tools</h2>
+<p>Text submitted to Humanivo tools is processed to generate output. We do not intentionally retain submitted text after your session, unless required for security, troubleshooting, abuse prevention, or legal compliance.</p>
+
+<h2>5. Cookies and Analytics</h2>
+<p>Humanivo may use cookies or similar technologies to improve functionality, understand traffic, and analyze website performance. You can control cookies through your browser settings.</p>
+
+<h2>6. Advertising and Third-Party Services</h2>
+<p>Humanivo may use third-party services, including analytics providers and advertising networks such as Google AdSense. These services may use cookies or similar technologies to show relevant ads, measure performance, and prevent abuse.</p>
+
+<h2>7. Data Security</h2>
+<p>We take reasonable steps to protect information submitted through Humanivo. However, no online service can guarantee complete security. You should avoid submitting passwords, financial details, private records, or sensitive personal information into any online writing tool.</p>
 
 <h2>8. Children's Privacy</h2>
 <p>Humanivo is not directed at children under 13, and we do not knowingly collect personal information from children under 13. If you believe a child has provided us with personal information, please contact us so we can remove it.</p>
 
 <h2>9. Your Rights</h2>
-<p>Depending on your location, you may have rights to access, correct, or request deletion of personal data we hold about you (such as contact form submissions), and to opt out of personalized advertising as described above. To exercise these rights, contact us using the details below.</p>
+<p>Depending on your location, you may have rights to access, correct, or request deletion of personal data we hold about you, such as contact form submissions. You may also have the right to opt out of certain advertising or analytics features.</p>
 
 <h2>10. External Links</h2>
-<p>Our platform may contain links to external creator profiles, social networks, or partner resources. We are not responsible for the privacy practices or content of those external websites.</p>
+<p>Our platform may contain links to external creator profiles, social networks, partner resources, or third-party websites. We are not responsible for the privacy practices, security, or content of those external websites.</p>
 
 <h2>11. Changes to This Policy</h2>
 <p>We may update this Privacy Policy from time to time. Continued use of Humanivo after changes are posted constitutes acceptance of the revised policy. The "Last updated" date above reflects the most recent revision.</p>
@@ -56,19 +96,10 @@ body{font-family:'Inter',sans-serif;background-color:#09090b}.glass-panel{backgr
 </section>
 </main>
 
-<footer class="relative z-10 overflow-hidden border-t border-white/[.07] bg-[#07070a] text-zinc-400"><div class="pointer-events-none absolute inset-0 opacity-70" style="background-image:linear-gradient(rgba(139,92,246,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(139,92,246,.035) 1px,transparent 1px);background-size:56px 56px"></div><div class="pointer-events-none absolute -left-32 top-8 h-80 w-80 rounded-full bg-brand-600/10 blur-3xl"></div><div class="pointer-events-none absolute -right-32 bottom-0 h-72 w-72 rounded-full bg-indigo-500/10 blur-3xl"></div>
-<div class="relative mx-auto max-w-7xl px-5 py-14 sm:px-6 sm:py-16 lg:px-8"><div class="rounded-[2rem] border border-white/[.08] bg-white/[.025] p-6 shadow-2xl shadow-black/30 backdrop-blur-sm sm:p-8 lg:p-10"><div class="grid grid-cols-1 gap-10 lg:grid-cols-12 lg:gap-12">
-<div class="lg:col-span-5"><a href="index.html" class="inline-flex items-center gap-3.5"><span class="flex h-11 w-11 items-center justify-center rounded-2xl bg-gradient-to-tr from-brand-600 via-violet-500 to-indigo-400 shadow-lg shadow-brand-600/25 ring-1 ring-white/20"><i class="fa-solid fa-feather-pointed text-white"></i></span><span><span class="block text-xl font-extrabold tracking-tight text-white">Humanivo</span><span class="block text-[10px] font-semibold uppercase tracking-[.2em] text-brand-400">Enterprise Edition</span></span></a><p class="mt-5 max-w-md text-sm leading-7 text-zinc-400">Humanivo makes AI text transformation continuous and scalable for creators and professionals worldwide.</p>
-<div class="mt-6 flex flex-wrap gap-2.5" aria-label="Sher Gul social profiles">
-<a href="https://www.facebook.com/shergulofficial" target="_blank" rel="noopener noreferrer" aria-label="Facebook" title="Facebook — @shergulofficial" class="flex h-10 w-10 items-center justify-center rounded-xl border border-white/[.08] bg-white/[.04] text-zinc-300 transition hover:-translate-y-1 hover:border-[#1877F2]/50 hover:bg-[#1877F2]/10 hover:text-[#1877F2]"><i class="fa-brands fa-facebook-f"></i></a>
-<a href="https://x.com/shergulofficial" target="_blank" rel="noopener noreferrer" aria-label="X" title="X — @shergulofficial" class="flex h-10 w-10 items-center justify-center rounded-xl border border-white/[.08] bg-white/[.04] text-zinc-300 transition hover:-translate-y-1 hover:border-white/50 hover:bg-white/10 hover:text-white"><i class="fa-brands fa-x-twitter"></i></a>
-<a href="https://www.linkedin.com/in/shergulofficial" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" title="LinkedIn — @shergulofficial" class="flex h-10 w-10 items-center justify-center rounded-xl border border-white/[.08] bg-white/[.04] text-zinc-300 transition hover:-translate-y-1 hover:border-[#0A66C2]/50 hover:bg-[#0A66C2]/10 hover:text-[#0A66C2]"><i class="fa-brands fa-linkedin-in"></i></a>
-<a href="https://www.youtube.com/@shergulofficial" target="_blank" rel="noopener noreferrer" aria-label="YouTube" title="YouTube — @shergulofficial" class="flex h-10 w-10 items-center justify-center rounded-xl border border-white/[.08] bg-white/[.04] text-zinc-300 transition hover:-translate-y-1 hover:border-[#FF0000]/50 hover:bg-[#FF0000]/10 hover:text-[#FF0000]"><i class="fa-brands fa-youtube"></i></a>
-<a href="https://www.threads.net/@shergulofficial" target="_blank" rel="noopener noreferrer" aria-label="Threads" title="Threads — @shergulofficial" class="flex h-10 w-10 items-center justify-center rounded-xl border border-white/[.08] bg-white/[.04] text-zinc-300 transition hover:-translate-y-1 hover:border-white/50 hover:bg-white/10 hover:text-white"><i class="fa-brands fa-threads"></i></a>
-<a href="https://www.instagram.com/shergulofficial" target="_blank" rel="noopener noreferrer" aria-label="Instagram" title="Instagram — @shergulofficial" class="flex h-10 w-10 items-center justify-center rounded-xl border border-white/[.08] bg-white/[.04] text-zinc-300 transition hover:-translate-y-1 hover:border-[#E1306C]/50 hover:bg-[#E1306C]/10 hover:text-[#E1306C]"><i class="fa-brands fa-instagram"></i></a>
-</div><p class="mt-3 text-xs font-medium text-zinc-500">@shergulofficial</p></div>
-<div class="grid grid-cols-2 gap-8 sm:grid-cols-3 lg:col-span-7"><div><h4 class="mb-5 text-xs font-bold uppercase tracking-[.18em] text-white">General</h4><ul class="space-y-3.5 text-sm"><li><a href="about.html" class="hover:text-brand-400">About Humanivo</a></li><li><a href="faq.html" class="hover:text-brand-400">FAQ &amp; Guide</a></li><li><a href="contact.html" class="hover:text-brand-400">Contact Us</a></li><li><a href="index.html#tool" class="hover:text-brand-400">AI Humanizer</a></li></ul></div><div><h4 class="mb-5 text-xs font-bold uppercase tracking-[.18em] text-white">Resources</h4><ul class="space-y-3.5 text-sm"><li><a href="index.html#features" class="hover:text-brand-400">Perplexity Engine</a></li><li><a href="https://www.youtube.com/@shergulofficial" target="_blank" class="hover:text-brand-400">Tutorial Videos</a></li><li><a href="privacy.html" class="hover:text-brand-400">Privacy Policy</a></li><li><a href="terms.html" class="hover:text-brand-400">Terms of Service</a></li></ul></div><div class="col-span-2 sm:col-span-1"><h4 class="mb-5 text-xs font-bold uppercase tracking-[.18em] text-white">Connect</h4><p class="max-w-xs text-sm leading-6">Follow Sher Gul for product news, AI insights, and Humanivo updates.</p><a href="https://x.com/shergulofficial" target="_blank" rel="noopener noreferrer" class="mt-5 inline-flex items-center gap-2 rounded-xl border border-brand-500/25 bg-brand-500/10 px-4 py-2.5 text-xs font-semibold text-brand-300 transition hover:-translate-y-0.5 hover:text-white">Follow @shergulofficial <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i></a></div></div>
-</div><div class="mt-10 flex flex-col gap-4 border-t border-white/[.07] pt-6 text-xs text-zinc-500 sm:flex-row sm:items-center sm:justify-between"><p>&copy; 2026 Humanivo Inc. All Rights Reserved.</p><div class="flex flex-wrap items-center gap-x-5 gap-y-2"><a href="privacy.html" class="hover:text-zinc-300">Privacy Policy</a><a href="terms.html" class="hover:text-zinc-300">Terms of Service</a><a href="contact.html" class="hover:text-zinc-300">Report an Issue</a><span class="text-zinc-600">Made with <span class="text-red-400">&#10084;</span> by <a href="https://www.instagram.com/shergulofficial" target="_blank" class="font-semibold text-zinc-300 hover:text-brand-400">Sher Gul</a></span></div></div></div></div>
+<footer class="relative z-10 border-t border-white/[.07] bg-[#07070a] text-zinc-500 px-4 py-8 text-center text-xs">
+<p>&copy; 2026 Humanivo Inc. All Rights Reserved.</p>
+<p class="mt-2">Made with <span class="text-red-400">&#10084;</span> by <a href="https://www.instagram.com/shergulofficial" target="_blank" class="font-semibold text-zinc-300 hover:text-brand-400">Sher Gul</a></p>
 </footer>
+
 </body>
 </html>
